@@ -100,8 +100,13 @@ def ask_decider_all(state: str, url: str = "http://127.0.0.1:8010/v1/systemone",
 
 
 def bedrock_llm(model_id: str = "amazon.nova-lite-v1:0", region: str = "us-east-1",
-                question: str = QUESTION, options: dict[str, str] = OPTIONS) -> Callable[[str], str]:
-    """The LLM second opinion: same question, same options, one key back."""
+                question: str = QUESTION, options: dict[str, str] = OPTIONS,
+                close_option: str = "close") -> Callable[[str], str]:
+    """The LLM second opinion: same question, same options, one key back.
+
+    An answer that is not one of the option keys counts as a hand-back (fail closed).
+    """
+    fallback = next(k for k in options if k != close_option)
     import boto3
     client = boto3.client("bedrock-runtime", region_name=region)
     opts = "\n".join(f"- {k}: {v}" for k, v in options.items())
@@ -114,7 +119,7 @@ def bedrock_llm(model_id: str = "amazon.nova-lite-v1:0", region: str = "us-east-
                             inferenceConfig={"maxTokens": 12, "temperature": 0})
         text = r["output"]["message"]["content"][0]["text"].strip().strip("`.")
         key = text.split()[0] if text else ""
-        return key if key in options else "missing_info"  # unparseable → hand back
+        return key if key in options else fallback
     return ask
 
 
@@ -124,7 +129,11 @@ def asymmetric_gate(
     threshold: float = 0.6,
     flag_thresholds: dict[str, float] | None = None,
     close_option: str = "close",
-    decider: Callable[[str], tuple[dict, dict[str, float]]] = ask_decider_all,
+    question: str = QUESTION,
+    options: dict[str, str] = OPTIONS,
+    flags: dict[str, str] = FLAGS,
+    decider_url: str = "http://127.0.0.1:8010/v1/systemone",
+    decider: Callable[[str], tuple[dict, dict[str, float]]] | None = None,
     llm: Callable[[str], str] | None = None,
     reasons: dict[str, str] = REASONS,
     on_decision: Callable[[GateDecision], None] | None = None,
@@ -134,17 +143,20 @@ def asymmetric_gate(
     state_of:        turns the tool call's input into the state Decider reads.
     threshold:       the confidence a close needs before it is trusted without the LLM.
     flag_thresholds: per-reason P(true) at which a flag vetoes a close; defaults to FLAG_THRESHOLDS.
-    llm:             the second opinion; defaults to Nova Lite on Bedrock.
+    question, options, flags: your own decision. `close_option` names the option that lets
+                     the agent act alone; every other option is a reason to hand back.
+    llm:             the second opinion; defaults to Nova Lite on Bedrock with the same question.
     on_decision:     optional hook to log or display every pass through the gate.
     """
-    second_opinion = llm or bedrock_llm()
+    decider = decider or (lambda s: ask_decider_all(s, decider_url, question, options, flags))
+    second_opinion = llm or bedrock_llm(question=question, options=options, close_option=close_option)
     th = FLAG_THRESHOLDS if flag_thresholds is None else flag_thresholds
 
     def classify(event, **kwargs) -> ClassifierResult:
         state = state_of(event.tool_use["input"])
         t0 = time.perf_counter()
-        answer, flags = decider(state)
-        label, path, conf = route(answer, flags, threshold, th, close_option)
+        answer, raised = decider(state)
+        label, path, conf = route(answer, raised, threshold, th, close_option)
         if label is None:
             label = second_opinion(state)
         hand_back = label != close_option
@@ -154,7 +166,7 @@ def asymmetric_gate(
         if path == "decider->llm":
             return ClassifierResult(hand_back, f"LLM second opinion: {why} (Decider 2B was unsure: {conf:.2f})")
         if path == "flag":
-            return ClassifierResult(True, f"Decider 2B flag: {why} (P={flags[label]:.2f})")
+            return ClassifierResult(True, f"Decider 2B flag: {why} (P={raised[label]:.2f})")
         return ClassifierResult(hand_back, f"Decider 2B: {why} (confidence {conf:.2f})")
 
     return classify
