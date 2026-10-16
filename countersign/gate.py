@@ -47,6 +47,21 @@ REASONS = {
     "missing_info": "a fact needed to decide is missing",
 }
 
+# One yes/no question per hand-back reason. Asked together in one request.
+# A single five-way choice let "close" win whenever no single reason stood out;
+# separate questions let each reason speak for itself.
+FLAGS = {
+    "breaks_commitment": "Does closing this undo something someone was already promised, approved for, told to expect, or currently relies on?",
+    "money_contract_people": "Does this change money, a budget, a price, payment terms, a contract, or who is hired, transferred, or paid?",
+    "bigger_conflict": "Do the two teams disagree about more than this one item, such as who owns something or whose priorities win?",
+    "missing_info": "Is a fact needed to make this decision still unknown, unchecked, or unconfirmed?",
+}
+
+# Where each flag vetoes a close. Measured, not chosen: the 90th percentile of each flag's
+# P(true) on the 20 routine cases in bench/dev.json + bench/test.json (Decider v19).
+# Re-measure for your own decision with bench/analyze.py.
+FLAG_THRESHOLDS = {"breaks_commitment": 0.3731, "money_contract_people": 0.3089, "bigger_conflict": 0.3461, "missing_info": 0.6347}
+
 
 @dataclass
 class GateDecision:
@@ -66,6 +81,22 @@ def ask_decider(state: str, url: str = "http://127.0.0.1:8010/v1/systemone",
     req = urllib.request.Request(url, body, {"content-type": "application/json"})
     with urllib.request.urlopen(req, timeout=10) as r:
         return json.load(r)["answers"]["gate"]
+
+
+def ask_decider_all(state: str, url: str = "http://127.0.0.1:8010/v1/systemone",
+                    question: str = QUESTION, options: dict[str, str] = OPTIONS,
+                    flags: dict[str, str] = FLAGS) -> tuple[dict, dict[str, float]]:
+    """One request: the choice question plus one yes/no flag per hand-back reason.
+
+    Returns (choice answer, {reason: P(true)}).
+    """
+    qs = {"gate": {"type": "choice", "instructions": question, "criteria": options}}
+    qs.update({f"flag_{k}": {"type": "noul", "instructions": v} for k, v in flags.items()})
+    body = json.dumps({"state": state, "questions": qs}).encode()
+    req = urllib.request.Request(url, body, {"content-type": "application/json"})
+    with urllib.request.urlopen(req, timeout=20) as r:
+        a = json.load(r)["answers"]
+    return a["gate"], {k: float(a[f"flag_{k}"]["noul"]) for k in flags}
 
 
 def bedrock_llm(model_id: str = "amazon.nova-lite-v1:0", region: str = "us-east-1",
@@ -91,41 +122,60 @@ def asymmetric_gate(
     state_of: Callable[[dict], str] = lambda tool_input: tool_input.get("summary", ""),
     *,
     threshold: float = 0.6,
+    flag_thresholds: dict[str, float] | None = None,
     close_option: str = "close",
-    decider: Callable[[str], dict] = ask_decider,
+    decider: Callable[[str], tuple[dict, dict[str, float]]] = ask_decider_all,
     llm: Callable[[str], str] | None = None,
     reasons: dict[str, str] = REASONS,
     on_decision: Callable[[GateDecision], None] | None = None,
 ):
     """Build a HumanInTheLoopClassifier that asks Decider 2B first.
 
-    state_of:     turns the tool call's input into the state Decider reads.
-    threshold:    the confidence a close needs before it is trusted without the LLM.
-    llm:          the second opinion; defaults to Nova Lite on Bedrock.
-    on_decision:  optional hook to log or display every pass through the gate.
+    state_of:        turns the tool call's input into the state Decider reads.
+    threshold:       the confidence a close needs before it is trusted without the LLM.
+    flag_thresholds: per-reason P(true) at which a flag vetoes a close; defaults to FLAG_THRESHOLDS.
+    llm:             the second opinion; defaults to Nova Lite on Bedrock.
+    on_decision:     optional hook to log or display every pass through the gate.
     """
     second_opinion = llm or bedrock_llm()
+    th = FLAG_THRESHOLDS if flag_thresholds is None else flag_thresholds
 
     def classify(event, **kwargs) -> ClassifierResult:
         state = state_of(event.tool_use["input"])
         t0 = time.perf_counter()
-        d = decider(state)
-        choice, conf = d["choice"], float(d["confidence"])
-
-        if choice != close_option or conf >= threshold:
-            hand_back = choice != close_option
-            dec = GateDecision("decider", choice, conf, hand_back, (time.perf_counter() - t0) * 1000)
-            if on_decision:
-                on_decision(dec)
-            why = reasons.get(choice, "routine")
-            return ClassifierResult(hand_back, f"Decider 2B: {why} (confidence {conf:.2f})")
-
-        label = second_opinion(state)
+        answer, flags = decider(state)
+        label, path, conf = route(answer, flags, threshold, th, close_option)
+        if label is None:
+            label = second_opinion(state)
         hand_back = label != close_option
-        dec = GateDecision("decider->llm", label, conf, hand_back, (time.perf_counter() - t0) * 1000)
         if on_decision:
-            on_decision(dec)
+            on_decision(GateDecision(path, label, conf, hand_back, (time.perf_counter() - t0) * 1000))
         why = reasons.get(label, "routine")
-        return ClassifierResult(hand_back, f"LLM second opinion: {why} (Decider 2B was unsure: {conf:.2f})")
+        if path == "decider->llm":
+            return ClassifierResult(hand_back, f"LLM second opinion: {why} (Decider 2B was unsure: {conf:.2f})")
+        if path == "flag":
+            return ClassifierResult(True, f"Decider 2B flag: {why} (P={flags[label]:.2f})")
+        return ClassifierResult(hand_back, f"Decider 2B: {why} (confidence {conf:.2f})")
 
     return classify
+
+
+def route(answer: dict, flags: dict[str, float], threshold: float,
+          flag_thresholds: dict[str, float], close_option: str = "close"):
+    """The whole decision, without I/O. Returns (label or None for "ask the LLM", path, confidence).
+
+    1. Decider chose a hand-back reason        -> hand back, at any confidence.
+    2. A flag is at or above its threshold     -> hand back for that flag's reason.
+       Flags can only stop a close; they never close anything.
+    3. Decider chose close with confidence >= threshold -> close.
+    4. Otherwise                               -> ask the LLM.
+    """
+    choice, conf = answer["choice"], float(answer["confidence"])
+    if choice != close_option:
+        return choice, "decider", conf
+    over = {k: p - flag_thresholds[k] for k, p in flags.items() if k in flag_thresholds and p >= flag_thresholds[k]}
+    if over:
+        return max(over, key=over.get), "flag", conf
+    if conf >= threshold:
+        return close_option, "decider", conf
+    return None, "decider->llm", conf
