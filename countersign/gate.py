@@ -194,3 +194,31 @@ def route(answer: dict, flags: dict[str, float], threshold: float,
     if conf >= threshold:
         return close_option, "decider", conf
     return None, "decider->llm", conf
+
+
+# --- Record check: one small Decider decision per record the agent read ---------------
+# One long input full of approvals drowned out a single promise. Asked one record at a
+# time, Decider separated them cleanly. A record that conflicts hands back at any
+# confidence, like every other hand-back reason.
+RECORD_QUESTION = "How does this record relate to the proposed change?"
+RECORD_OPTIONS = {
+    "agrees": "Someone in this record agrees to or approves the proposed change.",
+    "neutral": "The record is unrelated or only gives background.",
+    "conflicts": "The record holds a promise or plan that the proposed change would break.",
+}
+
+
+def conflicting_records(change: str, records: dict[str, str],
+                        url: str = "http://127.0.0.1:8010/v1/systemone") -> dict[str, float]:
+    """Return {record id: confidence} for every record Decider says the change would conflict with."""
+    found = {}
+    for rid, text in records.items():
+        body = json.dumps({"state": f"Proposed change: {change}\nRecord: {text}",
+                           "questions": {"r": {"type": "choice", "instructions": RECORD_QUESTION,
+                                               "criteria": RECORD_OPTIONS}}}).encode()
+        req = urllib.request.Request(url, body, {"content-type": "application/json"})
+        with urllib.request.urlopen(req, timeout=20) as r:
+            a = json.load(r)["answers"]["r"]
+        if a["choice"] == "conflicts":
+            found[rid] = float(a["confidence"])
+    return found

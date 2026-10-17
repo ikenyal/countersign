@@ -1,0 +1,218 @@
+[
+ {
+  "id": "r01",
+  "accept": "conflicts",
+  "change": "Move the product launch from Nov 3 to Nov 17.",
+  "record": "From: Kaori (sales) to Hoshino Retail. The launch is confirmed for Nov 3, and your store promotion can be scheduled for that day.",
+  "flagged": true,
+  "conf": 0.7216,
+  "ms": 805
+ },
+ {
+  "id": "r02",
+  "accept": "conflicts",
+  "change": "Cancel the Saturday onboarding session.",
+  "record": "From: HR to the new hires. Your onboarding session is on Saturday at 10:00; we have booked your travel.",
+  "flagged": true,
+  "conf": 0.8518,
+  "ms": 310
+ },
+ {
+  "id": "r03",
+  "accept": "conflicts",
+  "change": "Turn off the old reporting API at the end of this month.",
+  "record": "Partner agreement note: we told Nishi Systems in writing that the old reporting API will stay available until March.",
+  "flagged": true,
+  "conf": 0.9129,
+  "ms": 247
+ },
+ {
+  "id": "r04",
+  "accept": "conflicts",
+  "change": "Close the office kitchen for two weeks of renovation starting Monday.",
+  "record": "From: Facilities to the night shift. The kitchen will stay open for the night shift every day this month.",
+  "flagged": true,
+  "conf": 0.617,
+  "ms": 251
+ },
+ {
+  "id": "r05",
+  "accept": "conflicts",
+  "change": "Reduce the support team's weekend coverage to one person.",
+  "record": "Contract summary for Aoba Bank: weekend support is staffed by at least two engineers at all times.",
+  "flagged": true,
+  "conf": 0.8268,
+  "ms": 243
+ },
+ {
+  "id": "r06",
+  "accept": "conflicts",
+  "change": "Move the database maintenance window from Sunday to Wednesday night.",
+  "record": "From: Platform to the analytics team. We will never run maintenance on weekdays, so your nightly jobs are safe.",
+  "flagged": false,
+  "conf": null,
+  "ms": 241
+ },
+ {
+  "id": "r07",
+  "accept": "conflicts",
+  "change": "Remove the free tier from the pricing page next week.",
+  "record": "Blog post, last month: the free tier will remain available for all existing users through next year.",
+  "flagged": true,
+  "conf": 0.804,
+  "ms": 307
+ },
+ {
+  "id": "r08",
+  "accept": "conflicts",
+  "change": "Reassign Yuki from the mobile team to the web team.",
+  "record": "Minutes, mobile planning: Yuki is committed to the mobile release until it ships in December.",
+  "flagged": true,
+  "conf": 0.918,
+  "ms": 235
+ },
+ {
+  "id": "r09",
+  "accept": "agrees",
+  "change": "Move the product launch from Nov 3 to Nov 17.",
+  "record": "Minutes, product sync: the product lead approved moving the launch to Nov 17.",
+  "flagged": false,
+  "conf": null,
+  "ms": 236
+ },
+ {
+  "id": "r10",
+  "accept": "agrees",
+  "change": "Cancel the Saturday onboarding session.",
+  "record": "From: Mai (HR lead). I approve cancelling Saturday's session; we will run it online on Monday instead.",
+  "flagged": false,
+  "conf": null,
+  "ms": 256
+ },
+ {
+  "id": "r11",
+  "accept": "agrees",
+  "change": "Turn off the old reporting API at the end of this month.",
+  "record": "From: Nishi Systems. We have finished migrating and agree the old API can be turned off this month.",
+  "flagged": false,
+  "conf": null,
+  "ms": 241
+ },
+ {
+  "id": "r12",
+  "accept": "agrees",
+  "change": "Close the office kitchen for two weeks of renovation starting Monday.",
+  "record": "From: the night shift lead. We are fine with the kitchen closing; we will use the cafe downstairs.",
+  "flagged": false,
+  "conf": null,
+  "ms": 243
+ },
+ {
+  "id": "r13",
+  "accept": "agrees",
+  "change": "Reduce the support team's weekend coverage to one person.",
+  "record": "From: Support lead. One person on weekends is enough for us; I approve.",
+  "flagged": false,
+  "conf": null,
+  "ms": 256
+ },
+ {
+  "id": "r14",
+  "accept": "agrees",
+  "change": "Move the database maintenance window from Sunday to Wednesday night.",
+  "record": "From: the analytics lead. Wednesday night works; we will pause our jobs that night.",
+  "flagged": false,
+  "conf": null,
+  "ms": 256
+ },
+ {
+  "id": "r15",
+  "accept": "agrees",
+  "change": "Reassign Yuki from the mobile team to the web team.",
+  "record": "From: Yuki. I would like to move to the web team and my manager agreed.",
+  "flagged": false,
+  "conf": null,
+  "ms": 240
+ },
+ {
+  "id": "r16",
+  "accept": "agrees",
+  "change": "Remove the free tier from the pricing page next week.",
+  "record": "Minutes, pricing review: the pricing committee approved removing the free tier from the page next week.",
+  "flagged": false,
+  "conf": null,
+  "ms": 239
+ },
+ {
+  "id": "r17",
+  "accept": "neutral",
+  "change": "Move the product launch from Nov 3 to Nov 17.",
+  "record": "From: Design. The launch banner uses the new brand colors.",
+  "flagged": false,
+  "conf": null,
+  "ms": 256
+ },
+ {
+  "id": "r18",
+  "accept": "neutral",
+  "change": "Cancel the Saturday onboarding session.",
+  "record": "Facilities note: the training room projector was replaced last week.",
+  "flagged": false,
+  "conf": null,
+  "ms": 217
+ },
+ {
+  "id": "r19",
+  "accept": "neutral",
+  "change": "Turn off the old reporting API at the end of this month.",
+  "record": "Engineering wiki: the reporting service is written in Go and runs on two instances.",
+  "flagged": false,
+  "conf": null,
+  "ms": 235
+ },
+ {
+  "id": "r20",
+  "accept": "neutral",
+  "change": "Close the office kitchen for two weeks of renovation starting Monday.",
+  "record": "From: Facilities. The renovation contractor is Sakura Builders.",
+  "flagged": false,
+  "conf": null,
+  "ms": 221
+ },
+ {
+  "id": "r21",
+  "accept": "neutral",
+  "change": "Reduce the support team's weekend coverage to one person.",
+  "record": "Support dashboard note: weekend ticket volume averaged 14 tickets last month.",
+  "flagged": false,
+  "conf": null,
+  "ms": 251
+ },
+ {
+  "id": "r22",
+  "accept": "neutral",
+  "change": "Move the database maintenance window from Sunday to Wednesday night.",
+  "record": "Platform runbook: maintenance takes about 40 minutes and needs one engineer.",
+  "flagged": false,
+  "conf": null,
+  "ms": 239
+ },
+ {
+  "id": "r23",
+  "accept": "neutral",
+  "change": "Reassign Yuki from the mobile team to the web team.",
+  "record": "Team page: the web team works on the customer portal and the admin console.",
+  "flagged": false,
+  "conf": null,
+  "ms": 257
+ },
+ {
+  "id": "r24",
+  "accept": "neutral",
+  "change": "Remove the free tier from the pricing page next week.",
+  "record": "From: Web team. The pricing page is built from the CMS and updates in five minutes.",
+  "flagged": false,
+  "conf": null,
+  "ms": 254
+ }
+]

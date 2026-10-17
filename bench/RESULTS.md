@@ -44,3 +44,6 @@ median Decider ms (this machine): 1604, median LLM ms: 472
 LLM calls (structure + gate): 4/30
   blocked routine x01: no quote shows that payroll lead agreed
   blocked routine x04: no quote shows that cafeteria manager agreed
+
+## Record check (one Decider choice per record; untuned) — bench/records.json, written before scoring (8205c06)
+conflicts caught 7/8 (missed r06: needs 'Wednesday is a weekday'); false alarms 0/16; median 247 ms per record on a laptop CPU

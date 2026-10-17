@@ -27,7 +27,7 @@ from strands.vended_interventions.hitl import HumanInTheLoop
 from strands.vended_interventions.hitl.classifier import ClassifierResult
 
 from countersign import records
-from countersign.gate import FLAG_THRESHOLDS, GateDecision, asymmetric_gate
+from countersign.gate import FLAG_THRESHOLDS, GateDecision, asymmetric_gate, conflicting_records
 from countersign.structure import AFFECTED_DOC, DEPENDENCIES_DOC, unconfirmed_by_records
 
 AGENT_MODEL = "us.amazon.nova-pro-v1:0"   # fills the structure; Nova Lite was not accurate enough
@@ -130,13 +130,21 @@ def countersign_gate(conversation: str, required: list[str]):
         i = event.tool_use["input"]
         for a in i.get("affected", []):
             print(f"  [cites] {a.get('who')}: \"{a.get('evidence', '')[:70]}\" ({a.get('source')})")
+        reasons = []
         listed = " | ".join(a.get("who", "") for a in i.get("affected", [])).lower()
         left_out = [p for p in required if p.lower() not in listed]
-        why = (f"the agent left out {', '.join(left_out)}" if left_out
-               else unconfirmed_by_records(i.get("affected", []), i.get("dependencies", {}), sources))
-        if why:
-            print(f"  [gate] structure     -> HAND BACK to the humans: {why}")
-            return ClassifierResult(True, f"Not confirmed on record: {why}")
+        if left_out:
+            reasons.append(f"the agent left out {', '.join(left_out)}")
+        else:
+            why = unconfirmed_by_records(i.get("affected", []), i.get("dependencies", {}), sources)
+            if why:
+                reasons.append(why)
+        for rid, conf in conflicting_records(i.get("summary", ""), dict(SEEN)).items():
+            print(f"  [gate] record check  -> {rid} conflicts with the change (confidence {conf:.2f})")
+            reasons.append(f"{rid} holds a promise or plan this would break")
+        if reasons:
+            print(f"  [gate] -> HAND BACK to the humans: {'; '.join(reasons)}")
+            return ClassifierResult(True, "Needs the humans: " + "; ".join(reasons))
         return judge(event, **kwargs)
 
     return classify
