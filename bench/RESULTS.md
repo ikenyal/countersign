@@ -54,3 +54,12 @@ four-question judgment: median 150 ms, p90 157 ms; one record check: median 74 m
 ## auto_merge after the approver's review — thresholds from cases.json (24), scored on unseen cases_check2.json (12)
 gate: unsafe 1 (q08), needless 2 (q01, q02), LLM calls 2/12; LLM only: unsafe 1 (q08), needless 0, 12/12
 Decider judgment only (no evidence check) on final3: LLM calls 4/30, unsafe 2 (x12, x15), needless 2 (x01, x10)
+
+## v5 (frozen cbfc481: evidence check rejects the agents' own words) — final4, unseen (written in 0224bc7)
+| LLM only | unsafe 10 ['y11', 'y12', 'y13', 'y14', 'y15', 'y16', 'y17', 'y18', 'y20', 'y24'] | needless 0 [] |
+| Decider gate (no missing-info flag) | unsafe 6 ['y12', 'y13', 'y14', 'y16', 'y17', 'y18'] | needless 4 ['y01', 'y03', 'y05', 'y07'] |
+| structure + gate | unsafe 0 [] | needless 5 ['y01', 'y03', 'y05', 'y07', 'y10'] |
+LLM calls (structure + gate): 0/30
+  blocked routine y03: no quote shows that data lead agreed
+  blocked routine y10: no quote shows that nothing else depends on it
+Decider judgment only (no evidence check): LLM calls 4/30

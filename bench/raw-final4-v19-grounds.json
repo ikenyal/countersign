@@ -1,0 +1,722 @@
+[
+ {
+  "id": "y01",
+  "accept": [
+   "close"
+  ],
+  "choice": "close",
+  "confidence": 0.6706,
+  "probabilities": {
+   "close": 0.7365,
+   "breaks_commitment": 0.0737,
+   "money_contract_people": 0.0082,
+   "bigger_conflict": 0.0168,
+   "missing_info": 0.1648
+  },
+  "flags": {
+   "breaks_commitment": 0.3713,
+   "money_contract_people": 0.3244,
+   "bigger_conflict": 0.3371,
+   "missing_info": 0.7979
+  },
+  "decider_ms": 2702.6,
+  "llm": "close",
+  "llm_ms": 805.8
+ },
+ {
+  "id": "y02",
+  "accept": [
+   "close"
+  ],
+  "choice": "close",
+  "confidence": 0.7191,
+  "probabilities": {
+   "close": 0.7753,
+   "breaks_commitment": 0.0923,
+   "money_contract_people": 0.0061,
+   "bigger_conflict": 0.0148,
+   "missing_info": 0.1115
+  },
+  "flags": {
+   "breaks_commitment": 0.391,
+   "money_contract_people": 0.31,
+   "bigger_conflict": 0.3461,
+   "missing_info": 0.8309
+  },
+  "decider_ms": 1809.6,
+  "llm": "close",
+  "llm_ms": 465.0
+ },
+ {
+  "id": "y03",
+  "accept": [
+   "close"
+  ],
+  "choice": "close",
+  "confidence": 0.6883,
+  "probabilities": {
+   "close": 0.7506,
+   "breaks_commitment": 0.0928,
+   "money_contract_people": 0.0064,
+   "bigger_conflict": 0.0143,
+   "missing_info": 0.1359
+  },
+  "flags": {
+   "breaks_commitment": 0.3779,
+   "money_contract_people": 0.3334,
+   "bigger_conflict": 0.2424,
+   "missing_info": 0.7371
+  },
+  "decider_ms": 1799.5,
+  "llm": "close",
+  "llm_ms": 403.9
+ },
+ {
+  "id": "y04",
+  "accept": [
+   "close"
+  ],
+  "choice": "close",
+  "confidence": 0.7498,
+  "probabilities": {
+   "close": 0.7998,
+   "breaks_commitment": 0.1091,
+   "money_contract_people": 0.0062,
+   "bigger_conflict": 0.0123,
+   "missing_info": 0.0725
+  },
+  "flags": {
+   "breaks_commitment": 0.2792,
+   "money_contract_people": 0.2443,
+   "bigger_conflict": 0.2527,
+   "missing_info": 0.7887
+  },
+  "decider_ms": 1815.2,
+  "llm": "close",
+  "llm_ms": 383.4
+ },
+ {
+  "id": "y05",
+  "accept": [
+   "close"
+  ],
+  "choice": "close",
+  "confidence": 0.4689,
+  "probabilities": {
+   "close": 0.5751,
+   "breaks_commitment": 0.1094,
+   "money_contract_people": 0.0086,
+   "bigger_conflict": 0.0259,
+   "missing_info": 0.281
+  },
+  "flags": {
+   "breaks_commitment": 0.4153,
+   "money_contract_people": 0.4347,
+   "bigger_conflict": 0.3701,
+   "missing_info": 0.7598
+  },
+  "decider_ms": 1987.1,
+  "llm": "close",
+  "llm_ms": 385.1
+ },
+ {
+  "id": "y06",
+  "accept": [
+   "close"
+  ],
+  "choice": "close",
+  "confidence": 0.6357,
+  "probabilities": {
+   "close": 0.7086,
+   "breaks_commitment": 0.1589,
+   "money_contract_people": 0.0068,
+   "bigger_conflict": 0.0189,
+   "missing_info": 0.1068
+  },
+  "flags": {
+   "breaks_commitment": 0.345,
+   "money_contract_people": 0.2821,
+   "bigger_conflict": 0.2773,
+   "missing_info": 0.7439
+  },
+  "decider_ms": 1786.2,
+  "llm": "close",
+  "llm_ms": 423.8
+ },
+ {
+  "id": "y07",
+  "accept": [
+   "close"
+  ],
+  "choice": "close",
+  "confidence": 0.5177,
+  "probabilities": {
+   "close": 0.6141,
+   "breaks_commitment": 0.1551,
+   "money_contract_people": 0.0072,
+   "bigger_conflict": 0.0159,
+   "missing_info": 0.2077
+  },
+  "flags": {
+   "breaks_commitment": 0.4468,
+   "money_contract_people": 0.2828,
+   "bigger_conflict": 0.3117,
+   "missing_info": 0.7619
+  },
+  "decider_ms": 1925.1,
+  "llm": "close",
+  "llm_ms": 398.3
+ },
+ {
+  "id": "y08",
+  "accept": [
+   "close"
+  ],
+  "choice": "close",
+  "confidence": 0.6164,
+  "probabilities": {
+   "close": 0.6931,
+   "breaks_commitment": 0.1292,
+   "money_contract_people": 0.0072,
+   "bigger_conflict": 0.0329,
+   "missing_info": 0.1376
+  },
+  "flags": {
+   "breaks_commitment": 0.397,
+   "money_contract_people": 0.2531,
+   "bigger_conflict": 0.2581,
+   "missing_info": 0.7475
+  },
+  "decider_ms": 1915.0,
+  "llm": "close",
+  "llm_ms": 393.8
+ },
+ {
+  "id": "y09",
+  "accept": [
+   "close"
+  ],
+  "choice": "close",
+  "confidence": 0.7915,
+  "probabilities": {
+   "close": 0.8332,
+   "breaks_commitment": 0.0645,
+   "money_contract_people": 0.007,
+   "bigger_conflict": 0.0096,
+   "missing_info": 0.0857
+  },
+  "flags": {
+   "breaks_commitment": 0.2732,
+   "money_contract_people": 0.2333,
+   "bigger_conflict": 0.2355,
+   "missing_info": 0.8712
+  },
+  "decider_ms": 1832.2,
+  "llm": "close",
+  "llm_ms": 442.2
+ },
+ {
+  "id": "y10",
+  "accept": [
+   "close"
+  ],
+  "choice": "close",
+  "confidence": 0.6412,
+  "probabilities": {
+   "close": 0.713,
+   "breaks_commitment": 0.1252,
+   "money_contract_people": 0.0061,
+   "bigger_conflict": 0.0165,
+   "missing_info": 0.1392
+  },
+  "flags": {
+   "breaks_commitment": 0.3535,
+   "money_contract_people": 0.3043,
+   "bigger_conflict": 0.28,
+   "missing_info": 0.7678
+  },
+  "decider_ms": 1955.3,
+  "llm": "close",
+  "llm_ms": 432.3
+ },
+ {
+  "id": "y11",
+  "accept": [
+   "missing_info"
+  ],
+  "choice": "close",
+  "confidence": 0.5213,
+  "probabilities": {
+   "close": 0.617,
+   "breaks_commitment": 0.087,
+   "money_contract_people": 0.0108,
+   "bigger_conflict": 0.0228,
+   "missing_info": 0.2625
+  },
+  "flags": {
+   "breaks_commitment": 0.3688,
+   "money_contract_people": 0.3543,
+   "bigger_conflict": 0.3933,
+   "missing_info": 0.7651
+  },
+  "decider_ms": 1930.3,
+  "llm": "close",
+  "llm_ms": 472.8
+ },
+ {
+  "id": "y12",
+  "accept": [
+   "missing_info"
+  ],
+  "choice": "close",
+  "confidence": 0.5732,
+  "probabilities": {
+   "close": 0.6585,
+   "breaks_commitment": 0.1555,
+   "money_contract_people": 0.0093,
+   "bigger_conflict": 0.0206,
+   "missing_info": 0.1561
+  },
+  "flags": {
+   "breaks_commitment": 0.3455,
+   "money_contract_people": 0.2614,
+   "bigger_conflict": 0.2764,
+   "missing_info": 0.6655
+  },
+  "decider_ms": 1947.2,
+  "llm": "close",
+  "llm_ms": 421.2
+ },
+ {
+  "id": "y13",
+  "accept": [
+   "missing_info"
+  ],
+  "choice": "close",
+  "confidence": 0.6468,
+  "probabilities": {
+   "close": 0.7174,
+   "breaks_commitment": 0.0822,
+   "money_contract_people": 0.0086,
+   "bigger_conflict": 0.0195,
+   "missing_info": 0.1724
+  },
+  "flags": {
+   "breaks_commitment": 0.3323,
+   "money_contract_people": 0.2728,
+   "bigger_conflict": 0.2492,
+   "missing_info": 0.7462
+  },
+  "decider_ms": 1808.9,
+  "llm": "close",
+  "llm_ms": 396.6
+ },
+ {
+  "id": "y14",
+  "accept": [
+   "missing_info"
+  ],
+  "choice": "close",
+  "confidence": 0.6841,
+  "probabilities": {
+   "close": 0.7473,
+   "breaks_commitment": 0.105,
+   "money_contract_people": 0.0069,
+   "bigger_conflict": 0.0168,
+   "missing_info": 0.124
+  },
+  "flags": {
+   "breaks_commitment": 0.3371,
+   "money_contract_people": 0.2972,
+   "bigger_conflict": 0.3039,
+   "missing_info": 0.7789
+  },
+  "decider_ms": 1825.3,
+  "llm": "close",
+  "llm_ms": 494.8
+ },
+ {
+  "id": "y15",
+  "accept": [
+   "missing_info"
+  ],
+  "choice": "missing_info",
+  "confidence": 0.3676,
+  "probabilities": {
+   "close": 0.3836,
+   "breaks_commitment": 0.0809,
+   "money_contract_people": 0.0105,
+   "bigger_conflict": 0.0308,
+   "missing_info": 0.4941
+  },
+  "flags": {
+   "breaks_commitment": 0.3219,
+   "money_contract_people": 0.2214,
+   "bigger_conflict": 0.248,
+   "missing_info": 0.4927
+  },
+  "decider_ms": 1849.6,
+  "llm": "close",
+  "llm_ms": 388.7
+ },
+ {
+  "id": "y16",
+  "accept": [
+   "missing_info"
+  ],
+  "choice": "close",
+  "confidence": 0.5907,
+  "probabilities": {
+   "close": 0.6726,
+   "breaks_commitment": 0.1738,
+   "money_contract_people": 0.0077,
+   "bigger_conflict": 0.0263,
+   "missing_info": 0.1196
+  },
+  "flags": {
+   "breaks_commitment": 0.3531,
+   "money_contract_people": 0.3011,
+   "bigger_conflict": 0.2886,
+   "missing_info": 0.7578
+  },
+  "decider_ms": 1828.2,
+  "llm": "close",
+  "llm_ms": 416.0
+ },
+ {
+  "id": "y17",
+  "accept": [
+   "missing_info"
+  ],
+  "choice": "close",
+  "confidence": 0.523,
+  "probabilities": {
+   "close": 0.6184,
+   "breaks_commitment": 0.0978,
+   "money_contract_people": 0.008,
+   "bigger_conflict": 0.0186,
+   "missing_info": 0.2572
+  },
+  "flags": {
+   "breaks_commitment": 0.3193,
+   "money_contract_people": 0.2421,
+   "bigger_conflict": 0.2769,
+   "missing_info": 0.667
+  },
+  "decider_ms": 1795.4,
+  "llm": "close",
+  "llm_ms": 547.2
+ },
+ {
+  "id": "y18",
+  "accept": [
+   "missing_info"
+  ],
+  "choice": "close",
+  "confidence": 0.7744,
+  "probabilities": {
+   "close": 0.8195,
+   "breaks_commitment": 0.0571,
+   "money_contract_people": 0.0061,
+   "bigger_conflict": 0.0215,
+   "missing_info": 0.0957
+  },
+  "flags": {
+   "breaks_commitment": 0.2747,
+   "money_contract_people": 0.2099,
+   "bigger_conflict": 0.2433,
+   "missing_info": 0.7219
+  },
+  "decider_ms": 1749.2,
+  "llm": "close",
+  "llm_ms": 401.2
+ },
+ {
+  "id": "y19",
+  "accept": [
+   "breaks_commitment"
+  ],
+  "choice": "breaks_commitment",
+  "confidence": 0.5063,
+  "probabilities": {
+   "close": 0.2915,
+   "breaks_commitment": 0.605,
+   "money_contract_people": 0.0079,
+   "bigger_conflict": 0.0088,
+   "missing_info": 0.0868
+  },
+  "flags": {
+   "breaks_commitment": 0.561,
+   "money_contract_people": 0.2108,
+   "bigger_conflict": 0.2632,
+   "missing_info": 0.5619
+  },
+  "decider_ms": 1769.0,
+  "llm": "breaks_commitment",
+  "llm_ms": 483.8
+ },
+ {
+  "id": "y20",
+  "accept": [
+   "breaks_commitment"
+  ],
+  "choice": "breaks_commitment",
+  "confidence": 0.3282,
+  "probabilities": {
+   "close": 0.4188,
+   "breaks_commitment": 0.4626,
+   "money_contract_people": 0.0067,
+   "bigger_conflict": 0.0115,
+   "missing_info": 0.1004
+  },
+  "flags": {
+   "breaks_commitment": 0.582,
+   "money_contract_people": 0.2452,
+   "bigger_conflict": 0.3143,
+   "missing_info": 0.6469
+  },
+  "decider_ms": 1773.2,
+  "llm": "close",
+  "llm_ms": 393.6
+ },
+ {
+  "id": "y21",
+  "accept": [
+   "breaks_commitment"
+  ],
+  "choice": "breaks_commitment",
+  "confidence": 0.6814,
+  "probabilities": {
+   "close": 0.1247,
+   "breaks_commitment": 0.7451,
+   "money_contract_people": 0.0075,
+   "bigger_conflict": 0.011,
+   "missing_info": 0.1117
+  },
+  "flags": {
+   "breaks_commitment": 0.5008,
+   "money_contract_people": 0.2866,
+   "bigger_conflict": 0.476,
+   "missing_info": 0.2869
+  },
+  "decider_ms": 1772.3,
+  "llm": "breaks_commitment",
+  "llm_ms": 433.0
+ },
+ {
+  "id": "y22",
+  "accept": [
+   "money_contract_people"
+  ],
+  "choice": "close",
+  "confidence": 0.3985,
+  "probabilities": {
+   "close": 0.5188,
+   "breaks_commitment": 0.0833,
+   "money_contract_people": 0.2264,
+   "bigger_conflict": 0.0141,
+   "missing_info": 0.1574
+  },
+  "flags": {
+   "breaks_commitment": 0.2877,
+   "money_contract_people": 0.6451,
+   "bigger_conflict": 0.2612,
+   "missing_info": 0.7343
+  },
+  "decider_ms": 1767.9,
+  "llm": "money_contract_people",
+  "llm_ms": 515.4
+ },
+ {
+  "id": "y23",
+  "accept": [
+   "money_contract_people"
+  ],
+  "choice": "missing_info",
+  "confidence": 0.2431,
+  "probabilities": {
+   "close": 0.3876,
+   "breaks_commitment": 0.0889,
+   "money_contract_people": 0.1044,
+   "bigger_conflict": 0.0245,
+   "missing_info": 0.3944
+  },
+  "flags": {
+   "breaks_commitment": 0.2812,
+   "money_contract_people": 0.5606,
+   "bigger_conflict": 0.3071,
+   "missing_info": 0.5352
+  },
+  "decider_ms": 1761.0,
+  "llm": "money_contract_people",
+  "llm_ms": 448.9
+ },
+ {
+  "id": "y24",
+  "accept": [
+   "money_contract_people"
+  ],
+  "choice": "missing_info",
+  "confidence": 0.2414,
+  "probabilities": {
+   "close": 0.388,
+   "breaks_commitment": 0.0955,
+   "money_contract_people": 0.0973,
+   "bigger_conflict": 0.026,
+   "missing_info": 0.3932
+  },
+  "flags": {
+   "breaks_commitment": 0.3123,
+   "money_contract_people": 0.5616,
+   "bigger_conflict": 0.3563,
+   "missing_info": 0.501
+  },
+  "decider_ms": 1813.0,
+  "llm": "close",
+  "llm_ms": 397.9
+ },
+ {
+  "id": "y25",
+  "accept": [
+   "bigger_conflict"
+  ],
+  "choice": "bigger_conflict",
+  "confidence": 0.6194,
+  "probabilities": {
+   "close": 0.0964,
+   "breaks_commitment": 0.0301,
+   "money_contract_people": 0.0084,
+   "bigger_conflict": 0.6955,
+   "missing_info": 0.1695
+  },
+  "flags": {
+   "breaks_commitment": 0.2787,
+   "money_contract_people": 0.3363,
+   "bigger_conflict": 0.5094,
+   "missing_info": 0.3011
+  },
+  "decider_ms": 1800.4,
+  "llm": "bigger_conflict",
+  "llm_ms": 507.7
+ },
+ {
+  "id": "y26",
+  "accept": [
+   "bigger_conflict"
+  ],
+  "choice": "bigger_conflict",
+  "confidence": 0.4632,
+  "probabilities": {
+   "close": 0.1418,
+   "breaks_commitment": 0.1291,
+   "money_contract_people": 0.0071,
+   "bigger_conflict": 0.5706,
+   "missing_info": 0.1514
+  },
+  "flags": {
+   "breaks_commitment": 0.3711,
+   "money_contract_people": 0.2326,
+   "bigger_conflict": 0.7309,
+   "missing_info": 0.3221
+  },
+  "decider_ms": 1829.8,
+  "llm": "bigger_conflict",
+  "llm_ms": 439.8
+ },
+ {
+  "id": "y27",
+  "accept": [
+   "bigger_conflict"
+  ],
+  "choice": "missing_info",
+  "confidence": 0.3827,
+  "probabilities": {
+   "close": 0.2115,
+   "breaks_commitment": 0.1944,
+   "money_contract_people": 0.0138,
+   "bigger_conflict": 0.0742,
+   "missing_info": 0.5062
+  },
+  "flags": {
+   "breaks_commitment": 0.3288,
+   "money_contract_people": 0.2726,
+   "bigger_conflict": 0.5728,
+   "missing_info": 0.2796
+  },
+  "decider_ms": 1786.1,
+  "llm": "bigger_conflict",
+  "llm_ms": 500.0
+ },
+ {
+  "id": "y28",
+  "accept": [
+   "missing_info"
+  ],
+  "choice": "missing_info",
+  "confidence": 0.3716,
+  "probabilities": {
+   "close": 0.275,
+   "breaks_commitment": 0.1955,
+   "money_contract_people": 0.0104,
+   "bigger_conflict": 0.0218,
+   "missing_info": 0.4973
+  },
+  "flags": {
+   "breaks_commitment": 0.2564,
+   "money_contract_people": 0.2283,
+   "bigger_conflict": 0.3036,
+   "missing_info": 0.3435
+  },
+  "decider_ms": 1783.6,
+  "llm": "missing_info",
+  "llm_ms": 453.9
+ },
+ {
+  "id": "y29",
+  "accept": [
+   "missing_info"
+  ],
+  "choice": "missing_info",
+  "confidence": 0.6336,
+  "probabilities": {
+   "close": 0.1928,
+   "breaks_commitment": 0.0568,
+   "money_contract_people": 0.0139,
+   "bigger_conflict": 0.0296,
+   "missing_info": 0.7069
+  },
+  "flags": {
+   "breaks_commitment": 0.2469,
+   "money_contract_people": 0.2371,
+   "bigger_conflict": 0.2852,
+   "missing_info": 0.4332
+  },
+  "decider_ms": 1771.1,
+  "llm": "missing_info",
+  "llm_ms": 410.4
+ },
+ {
+  "id": "y30",
+  "accept": [
+   "missing_info"
+  ],
+  "choice": "close",
+  "confidence": 0.2336,
+  "probabilities": {
+   "close": 0.3869,
+   "breaks_commitment": 0.2853,
+   "money_contract_people": 0.0092,
+   "bigger_conflict": 0.0195,
+   "missing_info": 0.2991
+  },
+  "flags": {
+   "breaks_commitment": 0.3349,
+   "money_contract_people": 0.2812,
+   "bigger_conflict": 0.3039,
+   "missing_info": 0.4197
+  },
+  "decider_ms": 1768.8,
+  "llm": "missing_info",
+  "llm_ms": 395.5
+ }
+]

@@ -1,0 +1,524 @@
+{
+ "y01": {
+  "affected": [
+   {
+    "who": "mobile lead",
+    "evidence": "the mobile lead and the backend lead both approved"
+   },
+   {
+    "who": "backend lead",
+    "evidence": "the mobile lead and the backend lead both approved"
+   },
+   {
+    "who": "two reviewers from QA",
+    "evidence": "the two reviewers from QA confirmed 15:00 works"
+   }
+  ],
+  "dependencies": "nothing else is scheduled around the review"
+ },
+ "y02": {
+  "affected": [
+   {
+    "who": "Agent A (design)",
+    "evidence": "Agent A (design) and Agent B (frontend) agreed to rename the Figma page 'Old checkout' to 'Checkout v1 (archived)'."
+   },
+   {
+    "who": "Agent B (frontend)",
+    "evidence": "Agent A (design) and Agent B (frontend) agreed to rename the Figma page 'Old checkout' to 'Checkout v1 (archived)'."
+   },
+   {
+    "who": "Leads",
+    "evidence": "Both leads approved"
+   },
+   {
+    "who": "Three designers",
+    "evidence": "the three designers who use the page agreed"
+   }
+  ],
+  "dependencies": "no links or plugins depend on the page name"
+ },
+ "y03": {
+  "affected": [
+   {
+    "who": "data lead",
+    "evidence": "the data lead approved"
+   },
+   {
+    "who": "product lead",
+    "evidence": "the product lead approved"
+   },
+   {
+    "who": "four managers",
+    "evidence": "the four managers on the list said Tuesday is fine"
+   }
+  ],
+  "dependencies": "no meeting or report uses the email before Tuesday"
+ },
+ "y04": {
+  "affected": [
+   {
+    "who": "Agent A (SRE)",
+    "evidence": "Agent A (SRE) and Agent B (security) agreed to rotate the on-call handover document link in the team wiki to the new folder."
+   },
+   {
+    "who": "Agent B (security)",
+    "evidence": "Agent A (SRE) and Agent B (security) agreed to rotate the on-call handover document link in the team wiki to the new folder."
+   },
+   {
+    "who": "Both leads",
+    "evidence": "Both leads approved"
+   },
+   {
+    "who": "Everyone on the rotation",
+    "evidence": "everyone on the rotation acknowledged the new link"
+   }
+  ],
+  "dependencies": "The old link redirects, so nothing that uses it breaks."
+ },
+ "y05": {
+  "affected": [
+   {
+    "who": "team red",
+    "evidence": "Both team leads approved"
+   },
+   {
+    "who": "team gold",
+    "evidence": "Both team leads approved"
+   }
+  ],
+  "dependencies": "no other team uses the room at that time"
+ },
+ "y06": {
+  "affected": [
+   {
+    "who": "Agent A (QA)",
+    "evidence": "Agent A (QA) and Agent B (release) agreed to label release-blocking bugs 'blocker' instead of 'p0'."
+   },
+   {
+    "who": "Agent B (release)",
+    "evidence": "Agent A (QA) and Agent B (release) agreed to label release-blocking bugs 'blocker' instead of 'p0'."
+   },
+   {
+    "who": "Both leads",
+    "evidence": "Both leads approved"
+   },
+   {
+    "who": "The triage group",
+    "evidence": "the triage group agreed in its channel"
+   }
+  ],
+  "dependencies": "the only release dashboard that reads the label was updated in the same change."
+ },
+ "y07": {
+  "affected": [
+   {
+    "who": "Agent A (backend)",
+    "evidence": "Agent A (backend) and Agent B (infrastructure) agreed to move the staging database snapshot from 01:00 to 02:00."
+   },
+   {
+    "who": "Agent B (infrastructure)",
+    "evidence": "Agent A (backend) and Agent B (infrastructure) agreed to move the staging database snapshot from 01:00 to 02:00."
+   },
+   {
+    "who": "on-call leads",
+    "evidence": "Both on-call leads approved."
+   },
+   {
+    "who": "two engineers who restore from it",
+    "evidence": "the two engineers who restore from it confirmed."
+   }
+  ],
+  "dependencies": "no job runs between 01:00 and 02:00 that needs the snapshot."
+ },
+ "y08": {
+  "affected": [
+   {
+    "who": "Agent A (docs)",
+    "evidence": "Agent A (docs) and Agent B (developer relations) agreed to publish the SDK changelog on the docs site instead of the blog."
+   },
+   {
+    "who": "Agent B (developer relations)",
+    "evidence": "Agent A (docs) and Agent B (developer relations) agreed to publish the SDK changelog on the docs site instead of the blog."
+   },
+   {
+    "who": "SDK maintainers",
+    "evidence": "the SDK maintainers agreed"
+   }
+  ],
+  "dependencies": "no newsletter or feed links to the blog post"
+ },
+ "y09": {
+  "affected": [
+   {
+    "who": "Agent A (support)",
+    "evidence": "Agent A (support) and Agent B (product) agreed to hold the monthly feedback review in the product channel as a written thread instead of a call."
+   },
+   {
+    "who": "Agent B (product)",
+    "evidence": "Agent A (support) and Agent B (product) agreed to hold the monthly feedback review in the product channel as a written thread instead of a call."
+   },
+   {
+    "who": "Leads",
+    "evidence": "Both leads approved"
+   },
+   {
+    "who": "Regular attendees",
+    "evidence": "all six regular attendees agreed in the channel"
+   }
+  ],
+  "dependencies": "nothing else depends on the meeting format"
+ },
+ "y10": {
+  "affected": [
+   {
+    "who": "Agent A (platform)",
+    "evidence": "Agent A (platform) and Agent B (mobile) agreed to rename the internal feature flag 'new_nav_tmp' to 'nav_redesign'."
+   },
+   {
+    "who": "Agent B (mobile)",
+    "evidence": "Agent A (platform) and Agent B (mobile) agreed to rename the internal feature flag 'new_nav_tmp' to 'nav_redesign'."
+   },
+   {
+    "who": "Leads",
+    "evidence": "Both leads approved"
+   },
+   {
+    "who": "Engineers",
+    "evidence": "the two engineers who toggle it agreed"
+   },
+   {
+    "who": "Service",
+    "evidence": "the only service that reads the flag was updated in the same change."
+   }
+  ],
+  "dependencies": ""
+ },
+ "y11": {
+  "affected": [
+   {
+    "who": "mobile lead",
+    "evidence": "the mobile lead approved."
+   },
+   {
+    "who": "backend lead",
+    "evidence": "the backend lead approved."
+   }
+  ],
+  "dependencies": ""
+ },
+ "y12": {
+  "affected": [
+   {
+    "who": "Agent A (design)",
+    "evidence": "Agent A (design) and Agent B (frontend) agreed to rename the Figma page 'Old checkout' to 'Checkout v1 (archived)'."
+   },
+   {
+    "who": "Agent B (frontend)",
+    "evidence": "Agent A (design) and Agent B (frontend) agreed to rename the Figma page 'Old checkout' to 'Checkout v1 (archived)'."
+   },
+   {
+    "who": "Both leads",
+    "evidence": "Both leads approved."
+   },
+   {
+    "who": "designers",
+    "evidence": "the designers will probably be fine with it."
+   }
+  ],
+  "dependencies": ""
+ },
+ "y13": {
+  "affected": [
+   {
+    "who": "Agent A (data)",
+    "evidence": "Agent A (data) and Agent B (product) agreed that the weekly metrics email will go out on Tuesday morning instead of Monday afternoon."
+   },
+   {
+    "who": "Agent B (product)",
+    "evidence": "Agent A (data) and Agent B (product) agreed that the weekly metrics email will go out on Tuesday morning instead of Monday afternoon."
+   },
+   {
+    "who": "Everyone",
+    "evidence": "Everyone seems happy with Tuesday."
+   }
+  ],
+  "dependencies": ""
+ },
+ "y14": {
+  "affected": [
+   {
+    "who": "Agent A (SRE)",
+    "evidence": "Agent A (SRE) and Agent B (security) agreed to move the on-call handover document to a new folder."
+   },
+   {
+    "who": "Agent B (security)",
+    "evidence": "Agent A (SRE) and Agent B (security) agreed to move the on-call handover document to a new folder."
+   },
+   {
+    "who": "Leads",
+    "evidence": "Both leads approved"
+   },
+   {
+    "who": "Everyone on the rotation",
+    "evidence": "Everyone on the rotation acknowledged the move."
+   }
+  ],
+  "dependencies": ""
+ },
+ "y15": {
+  "affected": [
+   {
+    "who": "red lead",
+    "evidence": "the red lead approved"
+   },
+   {
+    "who": "Agent A",
+    "evidence": "Agent A (team red) and Agent B (team gold) agreed to share the Friday 16:00 demo room by alternating weeks."
+   },
+   {
+    "who": "Agent B",
+    "evidence": "Agent A (team red) and Agent B (team gold) agreed to share the Friday 16:00 demo room by alternating weeks."
+   }
+  ],
+  "dependencies": ""
+ },
+ "y16": {
+  "affected": [
+   {
+    "who": "Agent A (QA)",
+    "evidence": "Agent A (QA) and Agent B (release) agreed to label release-blocking bugs 'blocker' instead of 'p0'."
+   },
+   {
+    "who": "Agent B (release)",
+    "evidence": "Agent A (QA) and Agent B (release) agreed to label release-blocking bugs 'blocker' instead of 'p0'."
+   },
+   {
+    "who": "Both leads",
+    "evidence": "Both leads approved"
+   },
+   {
+    "who": "The triage group",
+    "evidence": "the triage group agreed."
+   }
+  ],
+  "dependencies": ""
+ },
+ "y17": {
+  "affected": [
+   {
+    "who": "Agent A (backend)",
+    "evidence": "Agent A (backend) and Agent B (infrastructure) agreed to move the staging database snapshot from 01:00 to 02:00."
+   },
+   {
+    "who": "Agent B (infrastructure)",
+    "evidence": "Agent A (backend) and Agent B (infrastructure) agreed to move the staging database snapshot from 01:00 to 02:00."
+   }
+  ],
+  "dependencies": "No one raised any concerns."
+ },
+ "y18": {
+  "affected": [
+   {
+    "who": "Agent A (docs)",
+    "evidence": "Agent A (docs) and Agent B (developer relations) agreed to publish the SDK changelog on the docs site instead of the blog."
+   },
+   {
+    "who": "Agent B (developer relations)",
+    "evidence": "Agent A (docs) and Agent B (developer relations) agreed to publish the SDK changelog on the docs site instead of the blog."
+   }
+  ],
+  "dependencies": "It should not affect anyone."
+ },
+ "y19": {
+  "affected": [
+   {
+    "who": "Agent A (product)",
+    "evidence": "Agent A (product) and Agent B (engineering) agreed to drop single sign-on from this quarter's release."
+   },
+   {
+    "who": "Agent B (engineering)",
+    "evidence": "Agent A (product) and Agent B (engineering) agreed to drop single sign-on from this quarter's release."
+   },
+   {
+    "who": "Leads",
+    "evidence": "Both leads approved."
+   },
+   {
+    "who": "Sales",
+    "evidence": "sales told two enterprise customers in writing that it would ship this quarter."
+   },
+   {
+    "who": "Two enterprise customers",
+    "evidence": "sales told two enterprise customers in writing that it would ship this quarter."
+   }
+  ],
+  "dependencies": "nothing else depends on it"
+ },
+ "y20": {
+  "affected": [
+   {
+    "who": "conference speakers",
+    "evidence": "The speakers were each sent a parking pass in their confirmation email."
+   },
+   {
+    "who": "both leads",
+    "evidence": "Both leads approved."
+   }
+  ],
+  "dependencies": ""
+ },
+ "y21": {
+  "affected": [
+   {
+    "who": "Agent A (platform)",
+    "evidence": "Agent A (platform) and Agent B (data) agreed to shorten log retention from 90 days to 30 days next month."
+   },
+   {
+    "who": "Agent B (data)",
+    "evidence": "Agent A (platform) and Agent B (data) agreed to shorten log retention from 90 days to 30 days next month."
+   },
+   {
+    "who": "Security team",
+    "evidence": "The security team was promised in the audit plan that logs would be kept for 90 days."
+   }
+  ],
+  "dependencies": ""
+ },
+ "y22": {
+  "affected": [
+   {
+    "who": "engineering lead",
+    "evidence": "both leads approved"
+   },
+   {
+    "who": "finance lead",
+    "evidence": "both leads approved"
+   },
+   {
+    "who": "everyone affected",
+    "evidence": "everyone affected agreed"
+   }
+  ],
+  "dependencies": ""
+ },
+ "y23": {
+  "affected": [
+   {
+    "who": "Agent A (design)",
+    "evidence": "Agent A (design) and Agent B (HR) agreed to bring on a freelance illustrator for three months."
+   },
+   {
+    "who": "Agent B (HR)",
+    "evidence": "Agent A (design) and Agent B (HR) agreed to bring on a freelance illustrator for three months."
+   },
+   {
+    "who": "freelance illustrator",
+    "evidence": "Agent A (design) and Agent B (HR) agreed to bring on a freelance illustrator for three months."
+   }
+  ],
+  "dependencies": ""
+ },
+ "y24": {
+  "affected": [
+   {
+    "who": "customer",
+    "evidence": "the customer's request"
+   },
+   {
+    "who": "Agent A (legal)",
+    "evidence": "Agent A (legal) and Agent B (sales) agreed"
+   },
+   {
+    "who": "Agent B (sales)",
+    "evidence": "Agent A (legal) and Agent B (sales) agreed"
+   }
+  ],
+  "dependencies": ""
+ },
+ "y25": {
+  "affected": [
+   {
+    "who": "Agent A (search team)",
+    "evidence": "Agent A (search team) and Agent B (recommendations team) agreed that recommendations will own the ranking service."
+   },
+   {
+    "who": "Agent B (recommendations team)",
+    "evidence": "Agent A (search team) and Agent B (recommendations team) agreed that recommendations will own the ranking service."
+   }
+  ],
+  "dependencies": ""
+ },
+ "y26": {
+  "affected": [
+   {
+    "who": "QA team",
+    "evidence": "Agent A (QA) and Agent B (product) agreed to skip the regression run to ship on Friday."
+   },
+   {
+    "who": "Product team",
+    "evidence": "Agent A (QA) and Agent B (product) agreed to skip the regression run to ship on Friday."
+   }
+  ],
+  "dependencies": ""
+ },
+ "y27": {
+  "affected": [
+   {
+    "who": "app team",
+    "evidence": "Agent A (platform) and Agent B (app team) agreed the app team can deploy without platform review."
+   },
+   {
+    "who": "platform's lead",
+    "evidence": "Platform's lead insists all deploys need platform review."
+   },
+   {
+    "who": "app lead",
+    "evidence": "The app lead has been pushing back for months."
+   }
+  ],
+  "dependencies": ""
+ },
+ "y28": {
+  "affected": [
+   {
+    "who": "Agent A (infrastructure)",
+    "evidence": "Agent A (infrastructure) and Agent B (security) agreed to rotate the shared database password tonight."
+   },
+   {
+    "who": "Agent B (security)",
+    "evidence": "Agent A (infrastructure) and Agent B (security) agreed to rotate the shared database password tonight."
+   }
+  ],
+  "dependencies": "Whether any batch job still uses the old password has not been checked."
+ },
+ "y29": {
+  "affected": [
+   {
+    "who": "Agent A (marketing)",
+    "evidence": "Agent A (marketing) and Agent B (legal) agreed to quote the customer's CTO in the press release."
+   },
+   {
+    "who": "Agent B (legal)",
+    "evidence": "Agent A (marketing) and Agent B (legal) agreed to quote the customer's CTO in the press release."
+   },
+   {
+    "who": "customer's CTO",
+    "evidence": ""
+   }
+  ],
+  "dependencies": ""
+ },
+ "y30": {
+  "affected": [
+   {
+    "who": "Agent A (mobile)",
+    "evidence": "Agent A (mobile) and Agent B (backend) agreed to turn off the old push notification endpoint on Friday."
+   },
+   {
+    "who": "Agent B (backend)",
+    "evidence": "Agent A (mobile) and Agent B (backend) agreed to turn off the old push notification endpoint on Friday."
+   }
+  ],
+  "dependencies": "Nobody has checked which app versions still call it."
+ }
+}
