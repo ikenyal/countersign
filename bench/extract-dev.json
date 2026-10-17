@@ -1,0 +1,550 @@
+{
+ "c01": {
+  "affected": [
+   {
+    "evidence": "Both calendars are free at 14:00",
+    "who": "Agent A (design)"
+   },
+   {
+    "evidence": "Both calendars are free at 14:00",
+    "who": "Agent B (QA)"
+   },
+   {
+    "evidence": "Both humans marked the review as movable",
+    "who": "Agent A (design)"
+   },
+   {
+    "evidence": "Both humans marked the review as movable",
+    "who": "Agent B (QA)"
+   }
+  ],
+  "dependencies": ""
+ },
+ "c02": {
+  "affected": [
+   {
+    "evidence": "Agent A (backend) and Agent B (frontend) agreed that backend will expose the new field in the existing API response this sprint, as both teams already planned.",
+    "who": "Agent A (backend)"
+   },
+   {
+    "evidence": "Agent A (backend) and Agent B (frontend) agreed that backend will expose the new field in the existing API response this sprint, as both teams already planned.",
+    "who": "Agent B (frontend)"
+   }
+  ],
+  "dependencies": ""
+ },
+ "c03": {
+  "affected": [
+   {
+    "evidence": "Both humans listed 'any approved brand color' as acceptable.",
+    "who": "Agent A (marketing)"
+   },
+   {
+    "evidence": "Both humans listed 'any approved brand color' as acceptable.",
+    "who": "Agent B (design)"
+   }
+  ],
+  "dependencies": ""
+ },
+ "c04": {
+  "affected": [
+   {
+    "evidence": "Agent A (support) and Agent B (docs) agreed docs will add the FAQ entry support drafted, within the docs team's normal weekly update.",
+    "who": "Agent A (support)"
+   },
+   {
+    "evidence": "Agent A (support) and Agent B (docs) agreed docs will add the FAQ entry support drafted, within the docs team's normal weekly update.",
+    "who": "Agent B (docs)"
+   }
+  ],
+  "dependencies": ""
+ },
+ "c05": {
+  "affected": [
+   {
+    "evidence": "Both teams listed either time as fine",
+    "who": "Agent A and Agent B"
+   },
+   {
+    "evidence": "no downstream job depends on 01:00",
+    "who": "downstream jobs"
+   }
+  ],
+  "dependencies": "Both teams listed either time as fine and no downstream job depends on 01:00."
+ },
+ "u01": {
+  "affected": [
+   {
+    "evidence": "Agent A (platform) and Agent B (finance) moved the database migration from Oct 20 to Oct 27.",
+    "who": "Agent A (platform) and Agent B (finance)"
+   },
+   {
+    "evidence": "Finance gets it after quarter-end close.",
+    "who": "Finance"
+   },
+   {
+    "evidence": "Platform loses the week of buffer its lead promised the on-call team, and nobody has told the on-call team yet.",
+    "who": "on-call team"
+   }
+  ],
+  "dependencies": ""
+ },
+ "u02": {
+  "affected": [
+   {
+    "evidence": "Agent A (product) and Agent B (engineering) agreed to drop the export feature from this release so the launch date holds.",
+    "who": "Agent A (product)"
+   },
+   {
+    "evidence": "Agent A (product) and Agent B (engineering) agreed to drop the export feature from this release so the launch date holds.",
+    "who": "Agent B (engineering)"
+   },
+   {
+    "evidence": "A customer was personally promised that feature by the product lead last month.",
+    "who": "Customer"
+   }
+  ],
+  "dependencies": ""
+ },
+ "u03": {
+  "affected": [
+   {
+    "evidence": "Agent A (hiring) and Agent B (budget) agreed to hold the open backend role until next quarter.",
+    "who": "Agent A (hiring)"
+   },
+   {
+    "evidence": "Agent A (hiring) and Agent B (budget) agreed to hold the open backend role until next quarter.",
+    "who": "Agent B (budget)"
+   },
+   {
+    "evidence": "The candidate in the final round was told to expect an offer this week.",
+    "who": "Candidate in the final round"
+   }
+  ],
+  "dependencies": ""
+ },
+ "u04": {
+  "affected": [
+   {
+    "evidence": "Agent A (events) and Agent B (facilities) agreed to move the team offsite to a smaller venue to save cost.",
+    "who": "Agent A (events)"
+   },
+   {
+    "evidence": "Agent A (events) and Agent B (facilities) agreed to move the team offsite to a smaller venue to save cost.",
+    "who": "Agent B (facilities)"
+   },
+   {
+    "evidence": "Three people who already booked travel for the original venue will have to cancel.",
+    "who": "Three people who already booked travel"
+   }
+  ],
+  "dependencies": "Three people who already booked travel for the original venue will have to cancel."
+ },
+ "u05": {
+  "affected": [
+   {
+    "who": "Agent A (QA)",
+    "evidence": "Agent A (QA) and Agent B (release) agreed to ship without the full regression run to meet the date."
+   },
+   {
+    "who": "Agent B (release)",
+    "evidence": "Agent A (QA) and Agent B (release) agreed to ship without the full regression run to meet the date."
+   },
+   {
+    "who": "QA lead",
+    "evidence": "The QA lead had publicly committed that nothing ships without it."
+   }
+  ],
+  "dependencies": ""
+ },
+ "b01": {
+  "affected": [
+   {
+    "evidence": "both teams' leads have said the other team owns analytics",
+    "who": "Agent A"
+   },
+   {
+    "evidence": "both teams' leads have said the other team owns analytics",
+    "who": "Agent B"
+   }
+  ],
+  "dependencies": ""
+ },
+ "b02": {
+  "affected": [
+   {
+    "evidence": "Growth has escalated twice that security reviews block experiments.",
+    "who": "Growth"
+   },
+   {
+    "evidence": "security says growth bypassed review last quarter.",
+    "who": "Security"
+   }
+  ],
+  "dependencies": ""
+ },
+ "b03": {
+  "affected": [
+   {
+    "evidence": "Neither team accepts ownership of the library, and the question has been open since the reorg.",
+    "who": "Team X"
+   },
+   {
+    "evidence": "Neither team accepts ownership of the library, and the question has been open since the reorg.",
+    "who": "Team Y"
+   }
+  ],
+  "dependencies": ""
+ },
+ "b04": {
+  "affected": [
+   {
+    "evidence": "Agent A (sales) and Agent B (product) are agreeing on a date for a custom feature.",
+    "who": "Agent A and Agent B"
+   },
+   {
+    "evidence": "Sales and product leadership disagree on whether custom work should be done at all.",
+    "who": "Sales and product leadership"
+   }
+  ],
+  "dependencies": ""
+ },
+ "b05": {
+  "affected": [
+   {
+    "evidence": "The app team believes SRE should own production;",
+    "who": "app team"
+   },
+   {
+    "evidence": "SRE believes the team that builds it runs it.",
+    "who": "SRE"
+   }
+  ],
+  "dependencies": ""
+ },
+ "m01": {
+  "affected": [
+   {
+    "evidence": "Sales needs it before the client meeting",
+    "who": "Agent A (sales)"
+   },
+   {
+    "evidence": "The client meeting date has not been set",
+    "who": "Agent B (legal)"
+   }
+  ],
+  "dependencies": ""
+ },
+ "m02": {
+  "affected": [
+   {
+    "evidence": "Finance needs the total cost, but the vendor has not sent a quote yet.",
+    "who": "Agent B (finance)"
+   }
+  ],
+  "dependencies": ""
+ },
+ "m03": {
+  "affected": [
+   {
+    "evidence": "Engineering needs to know whether the screens cover mobile, and the design brief does not say.",
+    "who": "Agent B (engineering)"
+   },
+   {
+    "evidence": "Agent A (design) and Agent B (engineering) are scheduling the handoff of new screens.",
+    "who": "Agent A (design)"
+   }
+  ],
+  "dependencies": ""
+ },
+ "m04": {
+  "affected": [
+   {
+    "evidence": "Catering needs a headcount",
+    "who": "Agent B (catering)"
+   },
+   {
+    "evidence": "registrations close tomorrow",
+    "who": "Agent A (events)"
+   }
+  ],
+  "dependencies": ""
+ },
+ "m05": {
+  "affected": [
+   {
+    "evidence": "Engineering needs to know which customer plan is affected, and the ticket does not include it.",
+    "who": "Engineering team"
+   }
+  ],
+  "dependencies": ""
+ },
+ "hc01": {
+  "affected": [
+   {
+    "evidence": "The two scheduling agents swapped which of two equally convenient rooms each team uses on Thursday.",
+    "who": "Both teams"
+   },
+   {
+    "evidence": "Both rooms have the same equipment, and neither team asked for a specific room.",
+    "who": "Both teams"
+   }
+  ],
+  "dependencies": ""
+ },
+ "hc02": {
+  "affected": [
+   {
+    "evidence": "procurement will submit the invoice by the 25th",
+    "who": "Agent A (accounting)"
+   },
+   {
+    "evidence": "procurement will submit the invoice by the 25th",
+    "who": "Agent B (procurement)"
+   }
+  ],
+  "dependencies": ""
+ },
+ "hc03": {
+  "affected": [
+   {
+    "evidence": "The patient listed the whole morning as free",
+    "who": "patient"
+   },
+   {
+    "evidence": "the clinic has the slot open",
+    "who": "clinic"
+   }
+  ],
+  "dependencies": ""
+ },
+ "hc04": {
+  "affected": [
+   {
+    "evidence": "Agent A (content) and Agent B (legal) agreed the blog post goes out Wednesday, after legal's standard review",
+    "who": "Agent A (content)"
+   },
+   {
+    "evidence": "Agent A (content) and Agent B (legal) agreed the blog post goes out Wednesday, after legal's standard review",
+    "who": "Agent B (legal)"
+   }
+  ],
+  "dependencies": "both teams' calendars already show as complete on Tuesday"
+ },
+ "hc05": {
+  "affected": [
+   {
+    "evidence": "Agent A (warehouse) and Agent B (shipping) agreed to combine two half-full shipments to the same customer into one truck tomorrow.",
+    "who": "Agent A (warehouse)"
+   },
+   {
+    "evidence": "Agent A (warehouse) and Agent B (shipping) agreed to combine two half-full shipments to the same customer into one truck tomorrow.",
+    "who": "Agent B (shipping)"
+   },
+   {
+    "evidence": "the customer requested no split.",
+    "who": "the customer"
+   }
+  ],
+  "dependencies": "Both orders have the same delivery window and the customer requested no split."
+ },
+ "hu01": {
+  "affected": [
+   {
+    "evidence": "To keep the release date, the two agents agreed the intern's feature will be cut from this release.",
+    "who": "the two agents"
+   },
+   {
+    "evidence": "The intern presented it at the all-hands last week as shipping in this release.",
+    "who": "the intern"
+   }
+  ],
+  "dependencies": ""
+ },
+ "hu02": {
+  "affected": [
+   {
+    "evidence": "The agents for operations and the vendor agreed to end the maintenance contract at the end of the month.",
+    "who": "agents for operations"
+   },
+   {
+    "evidence": "The agents for operations and the vendor agreed to end the maintenance contract at the end of the month.",
+    "who": "vendor"
+   }
+  ],
+  "dependencies": ""
+ },
+ "hu03": {
+  "affected": [
+   {
+    "evidence": "The two scheduling agents moved Friday's demo to Monday so the CTO can attend.",
+    "who": "CTO"
+   },
+   {
+    "evidence": "The customer's team had already arranged for their VP to join on Friday specifically.",
+    "who": "Customer's VP"
+   }
+  ],
+  "dependencies": ""
+ },
+ "hu04": {
+  "affected": [
+   {
+    "evidence": "Agent A (budget) and Agent B (training) agreed to cancel this quarter's external training budget.",
+    "who": "Agent A (budget)"
+   },
+   {
+    "evidence": "Agent A (budget) and Agent B (training) agreed to cancel this quarter's external training budget.",
+    "who": "Agent B (training)"
+   },
+   {
+    "evidence": "Two engineers already received manager approval for courses that start next month.",
+    "who": "Two engineers"
+   },
+   {
+    "evidence": "Two engineers already received manager approval for courses that start next month.",
+    "who": "Managers"
+   }
+  ],
+  "dependencies": ""
+ },
+ "hu05": {
+  "affected": [
+   {
+    "evidence": "The agents agreed the old reporting dashboard will be switched off this Friday instead of next quarter.",
+    "who": "Agents"
+   },
+   {
+    "evidence": "The finance team uses it for their month-end close, which falls next week.",
+    "who": "Finance team"
+   }
+  ],
+  "dependencies": ""
+ },
+ "hb01": {
+  "affected": [
+   {
+    "evidence": "The same type of escalation has bounced between these teams six times this year.",
+    "who": "Teams involved in customer escalations"
+   },
+   {
+    "evidence": "the two directors have openly disagreed about who owns enterprise customers.",
+    "who": "Directors"
+   }
+  ],
+  "dependencies": ""
+ },
+ "hb02": {
+  "affected": [
+   {
+    "evidence": "Agent A (design system) and Agent B (product squad) are deciding whether the squad may ship a custom button.",
+    "who": "Agent A (design system)"
+   },
+   {
+    "evidence": "Agent A (design system) and Agent B (product squad) are deciding whether the squad may ship a custom button.",
+    "who": "Agent B (product squad)"
+   }
+  ],
+  "dependencies": ""
+ },
+ "hb03": {
+  "affected": [
+   {
+    "evidence": "Each office has argued for a year that the other one should fund shared services.",
+    "who": "Regional Office A"
+   },
+   {
+    "evidence": "Each office has argued for a year that the other one should fund shared services.",
+    "who": "Regional Office B"
+   }
+  ],
+  "dependencies": ""
+ },
+ "hb04": {
+  "affected": [
+   {
+    "evidence": "marketing believes it should own its own analytics",
+    "who": "Agent B (marketing)"
+   },
+   {
+    "evidence": "the data team refuses",
+    "who": "Agent A (data team)"
+   }
+  ],
+  "dependencies": ""
+ },
+ "hb05": {
+  "affected": [
+   {
+    "evidence": "Payments has rejected every platform-team change this quarter, saying platform should not touch payments code at all.",
+    "who": "Payments team"
+   },
+   {
+    "evidence": "The agents are scheduling code review for a pull request from the platform team to the payments service.",
+    "who": "Agents"
+   }
+  ],
+  "dependencies": ""
+ },
+ "hm01": {
+  "affected": [
+   {
+    "evidence": "The agents are agreeing on a date to migrate the mail server.",
+    "who": "Agents"
+   },
+   {
+    "evidence": "The migration requires a maintenance window, and nobody has said which nights are allowed.",
+    "who": "Maintenance window"
+   }
+  ],
+  "dependencies": ""
+ },
+ "hm02": {
+  "affected": [
+   {
+    "evidence": "IT needs to know whether the person is on the Mac or Windows team, and the offer letter does not say.",
+    "who": "Agent A (HR) and Agent B (IT)"
+   }
+  ],
+  "dependencies": ""
+ },
+ "hm03": {
+  "affected": [
+   {
+    "evidence": "The two agents are booking a venue for the user group meetup.",
+    "who": "User group"
+   },
+   {
+    "evidence": "The venue needs the expected attendance, and registration has not opened yet.",
+    "who": "Venue"
+   }
+  ],
+  "dependencies": ""
+ },
+ "hm04": {
+  "affected": [
+   {
+    "evidence": "Billing needs to know whether the customer is on an annual or monthly plan",
+    "who": "Agent B (billing)"
+   },
+   {
+    "evidence": "the support ticket only has the customer's email",
+    "who": "Agent A (support)"
+   }
+  ],
+  "dependencies": ""
+ },
+ "hm05": {
+  "affected": [
+   {
+    "evidence": "The agents are deciding when to deprecate an old API version.",
+    "who": "agents"
+   },
+   {
+    "evidence": "That depends on how many clients still call it.",
+    "who": "clients"
+   }
+  ],
+  "dependencies": "That depends on how many clients still call it, and no one has pulled the usage numbers."
+ }
+}

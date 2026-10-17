@@ -1,0 +1,468 @@
+{
+ "v01": {
+  "affected": [
+   {
+    "who": "Agent A (accounts payable)",
+    "evidence": "Agent A (accounts payable) and Agent B (procurement) agreed that purchase orders will be filed under the new folder naming scheme both teams drafted together last week."
+   },
+   {
+    "who": "Agent B (procurement)",
+    "evidence": "Agent A (accounts payable) and Agent B (procurement) agreed that purchase orders will be filed under the new folder naming scheme both teams drafted together last week."
+   }
+  ],
+  "dependencies": ""
+ },
+ "v02": {
+  "affected": [
+   {
+    "who": "hotel housekeeping",
+    "evidence": "Agent A (hotel housekeeping) and Agent B (hotel front desk) agreed that housekeeping will report rooms ready through the existing tablet app instead of by phone."
+   },
+   {
+    "who": "hotel front desk",
+    "evidence": "Agent A (hotel housekeeping) and Agent B (hotel front desk) agreed that housekeeping will report rooms ready through the existing tablet app instead of by phone."
+   },
+   {
+    "who": "hotel managers",
+    "evidence": "Both managers asked for this and the app is already installed."
+   }
+  ],
+  "dependencies": "The app is already installed."
+ },
+ "v03": {
+  "affected": [
+   {
+    "who": "school office",
+    "evidence": "Agent A (school office) and Agent B (school IT) moved the printer maintenance visit from Thursday morning to Thursday afternoon."
+   },
+   {
+    "who": "school IT",
+    "evidence": "Agent A (school office) and Agent B (school IT) moved the printer maintenance visit from Thursday morning to Thursday afternoon."
+   },
+   {
+    "who": "technician",
+    "evidence": "The technician offered both slots and no classes depend on the printer that day."
+   }
+  ],
+  "dependencies": "No classes depend on the printer that day."
+ },
+ "v04": {
+  "affected": [
+   {
+    "who": "Agent A (frontend)",
+    "evidence": "Agent A (frontend) and Agent B (design system) agreed to use the existing 8px spacing token in the settings page instead of a hard-coded 10px."
+   },
+   {
+    "who": "Agent B (design system)",
+    "evidence": "Agent A (frontend) and Agent B (design system) agreed to use the existing 8px spacing token in the settings page instead of a hard-coded 10px."
+   },
+   {
+    "who": "Both leads",
+    "evidence": "Both leads had already said tokens should be used wherever possible."
+   }
+  ],
+  "dependencies": ""
+ },
+ "v05": {
+  "affected": [
+   {
+    "who": "Agent A (logistics, Nagoya depot)",
+    "evidence": "Agent A (logistics, Nagoya depot) and Agent B (logistics, Sendai depot) agreed to send their weekly stock report in the shared CSV format both depots already use for monthly reports."
+   },
+   {
+    "who": "Agent B (logistics, Sendai depot)",
+    "evidence": "Agent A (logistics, Nagoya depot) and Agent B (logistics, Sendai depot) agreed to send their weekly stock report in the shared CSV format both depots already use for monthly reports."
+   }
+  ],
+  "dependencies": ""
+ },
+ "v06": {
+  "affected": [
+   {
+    "who": "Agent A (community team)",
+    "evidence": "Agent A (community team) and Agent B (developer relations) agreed to post the meetup recap on Tuesday instead of Monday."
+   },
+   {
+    "who": "Agent B (developer relations)",
+    "evidence": "Agent A (community team) and Agent B (developer relations) agreed to post the meetup recap on Tuesday instead of Monday."
+   },
+   {
+    "who": "speakers",
+    "evidence": "the speakers were told only 'early next week'."
+   }
+  ],
+  "dependencies": ""
+ },
+ "v07": {
+  "affected": [
+   {
+    "who": "pharmacy",
+    "evidence": "Agent A (pharmacy) and Agent B (ward nurses) agreed that the daily medicine cart will arrive through the east elevator instead of the west elevator, which is under routine inspection."
+   },
+   {
+    "who": "ward nurses",
+    "evidence": "Agent A (pharmacy) and Agent B (ward nurses) agreed that the daily medicine cart will arrive through the east elevator instead of the west elevator, which is under routine inspection."
+   }
+  ],
+  "dependencies": ""
+ },
+ "v08": {
+  "affected": [
+   {
+    "who": "release management team",
+    "evidence": "Both teams voted for the wiki"
+   },
+   {
+    "who": "QA team",
+    "evidence": "Both teams voted for the wiki"
+   }
+  ],
+  "dependencies": ""
+ },
+ "v09": {
+  "affected": [
+   {
+    "who": "Agent A (sales Japan)",
+    "evidence": "Agent A (sales Japan) and Agent B (sales Korea) agreed to alternate the time of their monthly call between 09:00 and 17:00 Tokyo time."
+   },
+   {
+    "who": "Agent B (sales Korea)",
+    "evidence": "Agent A (sales Japan) and Agent B (sales Korea) agreed to alternate the time of their monthly call between 09:00 and 17:00 Tokyo time."
+   },
+   {
+    "who": "Japan region",
+    "evidence": "Both regions said either time is workable."
+   },
+   {
+    "who": "Korea region",
+    "evidence": "Both regions said either time is workable."
+   }
+  ],
+  "dependencies": ""
+ },
+ "v10": {
+  "affected": [
+   {
+    "who": "Agent A (help desk)",
+    "evidence": "Agent A (help desk) and Agent B (network team) agreed that password-reset tickets will be tagged 'account' instead of 'access'."
+   },
+   {
+    "who": "Agent B (network team)",
+    "evidence": "Agent A (help desk) and Agent B (network team) agreed that password-reset tickets will be tagged 'account' instead of 'access'."
+   }
+  ],
+  "dependencies": "Both teams' reports already group the two tags together."
+ },
+ "v11": {
+  "affected": [
+   {
+    "who": "Agent A (product)",
+    "evidence": "Agent A (product) and Agent B (engineering) agreed to drop the offline mode from the tablet app's next version."
+   },
+   {
+    "who": "Agent B (engineering)",
+    "evidence": "Agent A (product) and Agent B (engineering) agreed to drop the offline mode from the tablet app's next version."
+   },
+   {
+    "who": "sales team",
+    "evidence": "The sales team demoed offline mode to a hospital last month and told them it would be included."
+   },
+   {
+    "who": "hospital",
+    "evidence": "The sales team demoed offline mode to a hospital last month and told them it would be included."
+   }
+  ],
+  "dependencies": ""
+ },
+ "v12": {
+  "affected": [
+   {
+    "who": "Agent A (facilities)",
+    "evidence": "Agent A (facilities) and Agent B (HR) agreed to close the office parking lot for resurfacing for two weeks starting Monday."
+   },
+   {
+    "who": "Agent B (HR)",
+    "evidence": "Agent A (facilities) and Agent B (HR) agreed to close the office parking lot for resurfacing for two weeks starting Monday."
+   },
+   {
+    "who": "Employees with mobility needs",
+    "evidence": "Employees with mobility needs were each promised a guaranteed parking space."
+   }
+  ],
+  "dependencies": ""
+ },
+ "v13": {
+  "affected": [
+   {
+    "who": "Agent A (data engineering)",
+    "evidence": "Agent A (data engineering) and Agent B (BI) agreed to stop refreshing the legacy sales dashboard next week."
+   },
+   {
+    "who": "Agent B (BI)",
+    "evidence": "Agent A (data engineering) and Agent B (BI) agreed to stop refreshing the legacy sales dashboard next week."
+   },
+   {
+    "who": "Regional managers",
+    "evidence": "The regional managers still open it every morning and were never told it would go away."
+   }
+  ],
+  "dependencies": ""
+ },
+ "v14": {
+  "affected": [
+   {
+    "who": "Agent A (store operations)",
+    "evidence": "Agent A (store operations) and Agent B (marketing) agreed to end the loyalty points promotion three days early to save stock."
+   },
+   {
+    "who": "Agent B (marketing)",
+    "evidence": "Agent A (store operations) and Agent B (marketing) agreed to end the loyalty points promotion three days early to save stock."
+   },
+   {
+    "who": "Customers",
+    "evidence": "Customers were told in a printed flyer that it runs until the end of the month."
+   }
+  ],
+  "dependencies": ""
+ },
+ "v15": {
+  "affected": [
+   {
+    "who": "all admins",
+    "evidence": "require hardware security keys for all admins from tomorrow."
+   },
+   {
+    "who": "contractors' manager",
+    "evidence": "the contractors' manager was promised a one-month grace period to get keys shipped."
+   }
+  ],
+  "dependencies": ""
+ },
+ "v16": {
+  "affected": [
+   {
+    "who": "Agent A (travel desk)",
+    "evidence": "Agent A (travel desk) and Agent B (finance) agreed to rebook the team's conference flights in economy instead of business."
+   },
+   {
+    "who": "Agent B (finance)",
+    "evidence": "Agent A (travel desk) and Agent B (finance) agreed to rebook the team's conference flights in economy instead of business."
+   },
+   {
+    "who": "The director",
+    "evidence": "The director approved business class for the flights in writing because of the overnight route."
+   },
+   {
+    "who": "The team",
+    "evidence": "Agent A (travel desk) and Agent B (finance) agreed to rebook the team's conference flights in economy instead of business."
+   }
+  ],
+  "dependencies": ""
+ },
+ "v17": {
+  "affected": [
+   {
+    "who": "Agent A (marketing)",
+    "evidence": "Agent A (marketing) and Agent B (agency relations) agreed to extend the design agency's retainer for another six months at the same monthly fee."
+   },
+   {
+    "who": "Agent B (agency relations)",
+    "evidence": "Agent A (marketing) and Agent B (agency relations) agreed to extend the design agency's retainer for another six months at the same monthly fee."
+   },
+   {
+    "who": "design agency",
+    "evidence": ""
+   }
+  ],
+  "dependencies": ""
+ },
+ "v18": {
+  "affected": [
+   {
+    "who": "two contractors on the mobile team",
+    "evidence": "Agent A (engineering) and Agent B (HR) agreed to convert two contractors on the mobile team into full-time employees next quarter."
+   },
+   {
+    "who": "Agent A (engineering)",
+    "evidence": "Agent A (engineering) and Agent B (HR) agreed to convert two contractors on the mobile team into full-time employees next quarter."
+   },
+   {
+    "who": "Agent B (HR)",
+    "evidence": "Agent A (engineering) and Agent B (HR) agreed to convert two contractors on the mobile team into full-time employees next quarter."
+   }
+  ],
+  "dependencies": ""
+ },
+ "v19": {
+  "affected": [
+   {
+    "who": "Agent A (pricing)",
+    "evidence": "Agent A (pricing) and Agent B (sales) agreed to raise the price of the basic plan from 980 yen to 1,280 yen for new customers starting next month."
+   },
+   {
+    "who": "Agent B (sales)",
+    "evidence": "Agent A (pricing) and Agent B (sales) agreed to raise the price of the basic plan from 980 yen to 1,280 yen for new customers starting next month."
+   },
+   {
+    "who": "new customers",
+    "evidence": "Agent A (pricing) and Agent B (sales) agreed to raise the price of the basic plan from 980 yen to 1,280 yen for new customers starting next month."
+   }
+  ],
+  "dependencies": ""
+ },
+ "v20": {
+  "affected": [
+   {
+    "who": "Agent A (operations)",
+    "evidence": "Agent A (operations) and Agent B (finance) agreed to switch the courier company for all outgoing parcels to the cheaper bid, which requires signing a new one-year service agreement."
+   },
+   {
+    "who": "Agent B (finance)",
+    "evidence": "Agent A (operations) and Agent B (finance) agreed to switch the courier company for all outgoing parcels to the cheaper bid, which requires signing a new one-year service agreement."
+   }
+  ],
+  "dependencies": ""
+ },
+ "v21": {
+  "affected": [
+   {
+    "who": "customer",
+    "evidence": "a customer who complained about an outage"
+   },
+   {
+    "who": "Agent A (customer support)",
+    "evidence": "Agent A (customer support) and Agent B (billing) agreed to refund the full annual subscription to a customer who complained about an outage, well above the usual one-month credit."
+   },
+   {
+    "who": "Agent B (billing)",
+    "evidence": "Agent A (customer support) and Agent B (billing) agreed to refund the full annual subscription to a customer who complained about an outage, well above the usual one-month credit."
+   }
+  ],
+  "dependencies": ""
+ },
+ "v22": {
+  "affected": [
+   {
+    "who": "data science team",
+    "evidence": "Agent A (data science) and Agent B (product analytics) agreed that data science will define the official 'active user' metric."
+   },
+   {
+    "who": "product analytics team",
+    "evidence": "Agent A (data science) and Agent B (product analytics) agreed that data science will define the official 'active user' metric."
+   }
+  ],
+  "dependencies": ""
+ },
+ "v23": {
+  "affected": [
+   {
+    "who": "application team",
+    "evidence": "Agent A (infrastructure) and Agent B (application team) agreed the application team will run its own database."
+   },
+   {
+    "who": "infrastructure lead",
+    "evidence": "Infrastructure's lead has repeatedly argued that only infrastructure should operate databases."
+   },
+   {
+    "who": "application lead",
+    "evidence": "the application lead rejects that."
+   }
+  ],
+  "dependencies": ""
+ },
+ "v24": {
+  "affected": [
+   {
+    "who": "regional marketing",
+    "evidence": "Agent B (regional marketing) agreed regional marketing can use its own color palette for a local campaign."
+   },
+   {
+    "who": "brand team",
+    "evidence": "The brand team insists all regions follow one global palette."
+   }
+  ],
+  "dependencies": ""
+ },
+ "v25": {
+  "affected": [
+   {
+    "who": "Agent A (support)",
+    "evidence": "Agent A (support) and Agent B (engineering) agreed support will handle the bug triage rotation this month."
+   },
+   {
+    "who": "Agent B (engineering)",
+    "evidence": "Agent A (support) and Agent B (engineering) agreed support will handle the bug triage rotation this month."
+   }
+  ],
+  "dependencies": ""
+ },
+ "v26": {
+  "affected": [
+   {
+    "who": "Agent A (events)",
+    "evidence": "Agent A (events) and Agent B (catering) agreed to serve the buffet in the atrium."
+   },
+   {
+    "who": "Agent B (catering)",
+    "evidence": "Agent A (events) and Agent B (catering) agreed to serve the buffet in the atrium."
+   }
+  ],
+  "dependencies": "Nobody has checked whether food is allowed in the atrium under the building's rules."
+ },
+ "v27": {
+  "affected": [
+   {
+    "who": "Agent A (mobile)",
+    "evidence": "Agent A (mobile) and Agent B (backend) agreed to drop support for the oldest supported OS version."
+   },
+   {
+    "who": "Agent B (backend)",
+    "evidence": "Agent A (mobile) and Agent B (backend) agreed to drop support for the oldest supported OS version."
+   }
+  ],
+  "dependencies": ""
+ },
+ "v28": {
+  "affected": [
+   {
+    "who": "new hire",
+    "evidence": ""
+   },
+   {
+    "who": "Agent A (HR)",
+    "evidence": "Agent A (HR) and Agent B (IT) agreed to send the new hire's laptop to her home address."
+   },
+   {
+    "who": "Agent B (IT)",
+    "evidence": "Agent A (HR) and Agent B (IT) agreed to send the new hire's laptop to her home address."
+   }
+  ],
+  "dependencies": ""
+ },
+ "v29": {
+  "affected": [
+   {
+    "who": "Agent A (research)",
+    "evidence": "Agent A (research) and Agent B (legal) agreed to publish the user interview quotes in the report."
+   },
+   {
+    "who": "Agent B (legal)",
+    "evidence": "Agent A (research) and Agent B (legal) agreed to publish the user interview quotes in the report."
+   }
+  ],
+  "dependencies": "Whether the interviewees consented to being quoted is not recorded."
+ },
+ "v30": {
+  "affected": [
+   {
+    "who": "Agent A (procurement)",
+    "evidence": "Agent A (procurement) and Agent B (IT) agreed to buy fifty more software licenses."
+   },
+   {
+    "who": "Agent B (IT)",
+    "evidence": "Agent A (procurement) and Agent B (IT) agreed to buy fifty more software licenses."
+   }
+  ],
+  "dependencies": "Nobody has checked whether the current license agreement allows adding seats mid-term or at what price."
+ }
+}
