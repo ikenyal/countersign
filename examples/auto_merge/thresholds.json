@@ -1,11 +1,12 @@
 {
  "threshold": 0.6,
  "flag_thresholds": {
-  "security": 0.272,
-  "public_contract": 0.26,
-  "data": 0.2425,
-  "unverified": 0.6175
+  "behavior_change": 0.2588,
+  "security": 0.2621,
+  "public_contract": 0.2597,
+  "data": 0.2342,
+  "unverified": 0.5596
  },
  "q": 0.9,
- "from_routine_cases": 6
+ "from_routine_cases": 9
 }
