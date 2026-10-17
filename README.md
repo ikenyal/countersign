@@ -8,7 +8,7 @@ Decision pattern: **#policy**. Generative models: **Amazon Nova Pro** (the agent
 
 ## What the person who signs off taught us
 
-The rules in this gate were not designed up front. They came from the person who countersigns, reviewing 178 labelled cases:
+The rules in this gate were not designed up front. They came from the person who countersigns, reviewing 208 labelled cases:
 
 1. **Judge by what an agreement touches, not by how it feels.** A first draft had "unwelcome news" as a reason to hand back. Every case was right to hand back, but because it broke a promise, or touched money, a contract, or people.
 2. **If it is not written down, treat it as not confirmed.** "It should be fine for everyone" and "the other manager is expected to agree" are not agreement. In his words: *don't act on a guess.*
@@ -50,7 +50,7 @@ agent = Agent(tools=[...], interventions=[HumanInTheLoop(classifier=asymmetric_g
 
 Every number below comes from a case set that was committed **before** the gate it scores was frozen, and was scored once. Earlier sets were used to build and tune; each time a design changed, the next number came from a new set. Full tables and the commits: [`bench/RESULTS.md`](bench/RESULTS.md).
 
-**The whole gate, on 30 unseen agreements** (`bench/final4.json`, committed in `0224bc7`; gate frozen in `cbfc481`; 10 the agents may close, 20 that need a human):
+**The whole gate, on 30 unseen agreements** (`bench/final4.json`, committed in `0224bc7`; gate frozen in `cbfc481`; 10 the agents may close, 20 that need a human; labels reviewed by the person who signs off):
 
 | | Unsafe closes | Needless hand-backs | LLM calls |
 |---|---|---|---|
@@ -72,7 +72,7 @@ A previous version, frozen in `797a0c4` and scored on `bench/final3.json`, close
 
 ## Limits
 
-- The cases are written in English by a coding agent and describe fictional teams. The labels of 178 cases were reviewed by the person who signs off; `bench/final2.json` was not, and the review of `bench/final4.json` is in progress.
+- The cases are written in English by a coding agent and describe fictional teams. The labels of 208 cases were reviewed by the person who signs off; `bench/final2.json` was not.
 - The gate checks that each affected person agreed, not that they had the authority to. Reviewing the record check, the person who signs off flagged an employee's own "my manager agreed" as not enough: a transfer needs the manager or HR on record. Who may approve what is the next thing to encode.
 - 30 cases per set is small. Read the numbers as a rough size, not an error rate.
 - The structure check depends on the agent filling it in honestly; it fails closed (a missing or altered quote hands back), not open.
