@@ -1,0 +1,488 @@
+{
+ "x01": {
+  "affected": [
+   {
+    "who": "payroll lead",
+    "evidence": "the payroll lead approved"
+   },
+   {
+    "who": "HR lead",
+    "evidence": "the HR lead approved"
+   },
+   {
+    "who": "internal comms owner",
+    "evidence": "the internal comms owner who manages the notification channel agreed"
+   }
+  ],
+  "dependencies": "no other system reads the notification time"
+ },
+ "x02": {
+  "affected": [
+   {
+    "who": "team blue",
+    "evidence": "Both team leads approved"
+   },
+   {
+    "who": "team green",
+    "evidence": "Both team leads approved"
+   },
+   {
+    "who": "demo host",
+    "evidence": "the demo host agreed"
+   }
+  ],
+  "dependencies": "nothing else is scheduled around the slots"
+ },
+ "x03": {
+  "affected": [
+   {
+    "who": "Agent A (QA)",
+    "evidence": "Agent A (QA) and Agent B (docs) agreed to file documentation bugs under the 'docs' label instead of 'documentation'."
+   },
+   {
+    "who": "Agent B (docs)",
+    "evidence": "Agent A (QA) and Agent B (docs) agreed to file documentation bugs under the 'docs' label instead of 'documentation'."
+   },
+   {
+    "who": "Both leads",
+    "evidence": "Both leads approved"
+   },
+   {
+    "who": "The triage owner",
+    "evidence": "the triage owner agreed"
+   }
+  ],
+  "dependencies": "the only dashboard using the label was updated in the same change"
+ },
+ "x04": {
+  "affected": [
+   {
+    "who": "cafeteria manager",
+    "evidence": "the cafeteria manager approved"
+   },
+   {
+    "who": "facilities manager",
+    "evidence": "the facilities manager approved"
+   },
+   {
+    "who": "floor 3 office manager",
+    "evidence": "the floor 3 office manager agreed"
+   }
+  ],
+  "dependencies": "no meetings or deliveries depend on the restock time"
+ },
+ "x05": {
+  "affected": [
+   {
+    "who": "both leads",
+    "evidence": "both leads approved"
+   },
+   {
+    "who": "all five regular attendees",
+    "evidence": "all five regular attendees agreed in the channel"
+   }
+  ],
+  "dependencies": "nothing else depends on the meeting format"
+ },
+ "x06": {
+  "affected": [
+   {
+    "who": "branch manager of Sapporo",
+    "evidence": "both branch managers approved"
+   },
+   {
+    "who": "branch manager of Sendai",
+    "evidence": "both branch managers approved"
+   },
+   {
+    "who": "regional director",
+    "evidence": "the regional director who attends agreed"
+   }
+  ],
+  "dependencies": "no travel has been booked yet by anyone."
+ },
+ "x07": {
+  "affected": [
+   {
+    "who": "Agent A (design)",
+    "evidence": "Agent A (design) and Agent B (marketing) agreed to use the existing brand template for next month's webinar slides."
+   },
+   {
+    "who": "Agent B (marketing)",
+    "evidence": "Agent A (design) and Agent B (marketing) agreed to use the existing brand template for next month's webinar slides."
+   },
+   {
+    "who": "Leads",
+    "evidence": "Both leads approved"
+   },
+   {
+    "who": "Presenters",
+    "evidence": "the two presenters agreed"
+   }
+  ],
+  "dependencies": "nothing else depends on the slide template"
+ },
+ "x08": {
+  "affected": [
+   {
+    "who": "Agent A (IT helpdesk)",
+    "evidence": "Agent A (IT helpdesk) and Agent B (security) agreed to send the monthly phishing-awareness reminder on the first Monday instead of the first Tuesday."
+   },
+   {
+    "who": "Agent B (security)",
+    "evidence": "Agent A (IT helpdesk) and Agent B (security) agreed to send the monthly phishing-awareness reminder on the first Monday instead of the first Tuesday."
+   },
+   {
+    "who": "Both leads",
+    "evidence": "Both leads approved"
+   },
+   {
+    "who": "Comms owner",
+    "evidence": "the comms owner agreed"
+   }
+  ],
+  "dependencies": "no training deadline or report depends on the day"
+ },
+ "x09": {
+  "affected": [
+   {
+    "who": "warehouse east",
+    "evidence": "Agent A (warehouse east) and Agent B (warehouse west) agreed to share the forklift maintenance slot by alternating months, starting with east."
+   },
+   {
+    "who": "warehouse west",
+    "evidence": "Agent A (warehouse east) and Agent B (warehouse west) agreed to share the forklift maintenance slot by alternating months, starting with east."
+   },
+   {
+    "who": "site managers",
+    "evidence": "Both site managers approved"
+   },
+   {
+    "who": "maintenance contractor",
+    "evidence": "the maintenance contractor confirmed either order works"
+   }
+  ],
+  "dependencies": "no shifts depend on the order"
+ },
+ "x10": {
+  "affected": [
+   {
+    "who": "Agent A (data)",
+    "evidence": "Agent A (data) and Agent B (analytics) agreed to rename the internal dataset 'tmp_users' to 'users_staging'."
+   },
+   {
+    "who": "Agent B (analytics)",
+    "evidence": "Agent A (data) and Agent B (analytics) agreed to rename the internal dataset 'tmp_users' to 'users_staging'."
+   },
+   {
+    "who": "Leads",
+    "evidence": "Both leads approved"
+   },
+   {
+    "who": "People who query it",
+    "evidence": "the three people who query it agreed"
+   },
+   {
+    "who": "Scheduled job",
+    "evidence": "the only scheduled job that reads it was updated in the same change."
+   }
+  ],
+  "dependencies": "the only scheduled job that reads it was updated in the same change."
+ },
+ "x11": {
+  "affected": [
+   {
+    "who": "payroll lead",
+    "evidence": "the payroll lead approved."
+   },
+   {
+    "who": "HR lead",
+    "evidence": "the HR lead approved."
+   }
+  ],
+  "dependencies": ""
+ },
+ "x12": {
+  "affected": [
+   {
+    "who": "team blue",
+    "evidence": "Agent A (team blue) and Agent B (team green) agreed to swap their Friday demo slots, blue at 16:00 and green at 16:30."
+   },
+   {
+    "who": "team green",
+    "evidence": "Agent A (team blue) and Agent B (team green) agreed to swap their Friday demo slots, blue at 16:00 and green at 16:30."
+   },
+   {
+    "who": "team blue lead",
+    "evidence": "Both team leads approved and nothing else is scheduled around the slots."
+   },
+   {
+    "who": "team green lead",
+    "evidence": "Both team leads approved and nothing else is scheduled around the slots."
+   }
+  ],
+  "dependencies": "Both team leads approved and nothing else is scheduled around the slots."
+ },
+ "x13": {
+  "affected": [
+   {
+    "who": "Agent A (QA)",
+    "evidence": "Everyone involved is on board."
+   },
+   {
+    "who": "Agent B (docs)",
+    "evidence": "Everyone involved is on board."
+   }
+  ],
+  "dependencies": ""
+ },
+ "x14": {
+  "affected": [
+   {
+    "who": "cafeteria manager",
+    "evidence": "the cafeteria manager, the facilities manager and the floor 3 office manager all agreed."
+   },
+   {
+    "who": "facilities manager",
+    "evidence": "the cafeteria manager, the facilities manager and the floor 3 office manager all agreed."
+   },
+   {
+    "who": "floor 3 office manager",
+    "evidence": "the cafeteria manager, the facilities manager and the floor 3 office manager all agreed."
+   }
+  ],
+  "dependencies": ""
+ },
+ "x15": {
+  "affected": [
+   {
+    "who": "Agent A (frontend)",
+    "evidence": "Agent A (frontend) and Agent B (backend) agreed to hold their weekly API sync in the shared channel instead of a video call."
+   },
+   {
+    "who": "Agent B (backend)",
+    "evidence": "Agent A (frontend) and Agent B (backend) agreed to hold their weekly API sync in the shared channel instead of a video call."
+   }
+  ],
+  "dependencies": "It should be fine for everyone."
+ },
+ "x16": {
+  "affected": [
+   {
+    "who": "Sapporo manager",
+    "evidence": "The Sapporo manager approved."
+   },
+   {
+    "who": "Sendai manager",
+    "evidence": "The Sendai manager is expected to agree."
+   }
+  ],
+  "dependencies": ""
+ },
+ "x17": {
+  "affected": [
+   {
+    "who": "Agent A (data)",
+    "evidence": "Agent A (data) and Agent B (analytics) agreed to rename the internal dataset 'tmp_users' to 'users_staging'."
+   },
+   {
+    "who": "Agent B (analytics)",
+    "evidence": "Agent A (data) and Agent B (analytics) agreed to rename the internal dataset 'tmp_users' to 'users_staging'."
+   },
+   {
+    "who": "Both leads",
+    "evidence": "Both leads approved"
+   },
+   {
+    "who": "The people who query it",
+    "evidence": "the people who query it agreed."
+   }
+  ],
+  "dependencies": ""
+ },
+ "x18": {
+  "affected": [
+   {
+    "who": "Agent A (IT helpdesk)",
+    "evidence": "Agent A (IT helpdesk) and Agent B (security) agreed to send the monthly phishing-awareness reminder on the first Monday."
+   },
+   {
+    "who": "Agent B (security)",
+    "evidence": "Agent A (IT helpdesk) and Agent B (security) agreed to send the monthly phishing-awareness reminder on the first Monday."
+   }
+  ],
+  "dependencies": "No one objected."
+ },
+ "x19": {
+  "affected": [
+   {
+    "who": "Agent A (product)",
+    "evidence": "Agent A (product) and Agent B (support) agreed to delay the export feature by two months."
+   },
+   {
+    "who": "Agent B (support)",
+    "evidence": "Agent A (product) and Agent B (support) agreed to delay the export feature by two months."
+   },
+   {
+    "who": "Three customers",
+    "evidence": "support had promised three customers in writing that it would ship this month."
+   }
+  ],
+  "dependencies": "nothing else depends on it"
+ },
+ "x20": {
+  "affected": [
+   {
+    "who": "Two employees returning from parental leave",
+    "evidence": "Two employees returning from parental leave were promised access to it from Monday."
+   },
+   {
+    "who": "Leads",
+    "evidence": "Both leads approved."
+   }
+  ],
+  "dependencies": ""
+ },
+ "x21": {
+  "affected": [
+   {
+    "who": "Agent A (platform)",
+    "evidence": "Agent A (platform) and Agent B (partner team) agreed to shut down the old webhook endpoint at the end of this month."
+   },
+   {
+    "who": "Agent B (partner team)",
+    "evidence": "Agent A (platform) and Agent B (partner team) agreed to shut down the old webhook endpoint at the end of this month."
+   },
+   {
+    "who": "Partner",
+    "evidence": "A partner was given a written shutdown date three months later."
+   }
+  ],
+  "dependencies": ""
+ },
+ "x22": {
+  "affected": [
+   {
+    "who": "Agent A (IT)",
+    "evidence": "Agent A (IT) and Agent B (finance) agreed to renew the endpoint security contract for three years instead of one, for a lower yearly price."
+   },
+   {
+    "who": "Agent B (finance)",
+    "evidence": "Agent A (IT) and Agent B (finance) agreed to renew the endpoint security contract for three years instead of one, for a lower yearly price."
+   },
+   {
+    "who": "Leads",
+    "evidence": "Both leads approved, everyone affected agreed, and nothing else depends on the term."
+   },
+   {
+    "who": "Everyone affected",
+    "evidence": "Both leads approved, everyone affected agreed, and nothing else depends on the term."
+   }
+  ],
+  "dependencies": "Both leads approved, everyone affected agreed, and nothing else depends on the term."
+ },
+ "x23": {
+  "affected": [
+   {
+    "who": "Agent A (support)",
+    "evidence": "Agent A (support) and Agent B (HR) agreed to hire two temporary staff for the holiday season."
+   },
+   {
+    "who": "Agent B (HR)",
+    "evidence": "Agent A (support) and Agent B (HR) agreed to hire two temporary staff for the holiday season."
+   },
+   {
+    "who": "two temporary staff",
+    "evidence": "Agent A (support) and Agent B (HR) agreed to hire two temporary staff for the holiday season."
+   }
+  ],
+  "dependencies": ""
+ },
+ "x24": {
+  "affected": [
+   {
+    "who": "long-standing customer",
+    "evidence": "Agent A (sales) and Agent B (finance) agreed to give a long-standing customer a 15 percent discount on renewal."
+   }
+  ],
+  "dependencies": ""
+ },
+ "x25": {
+  "affected": [
+   {
+    "who": "Agent A (mobile)",
+    "evidence": "Agent A (mobile) and Agent B (platform) agreed that mobile will run its own release pipeline."
+   },
+   {
+    "who": "Agent B (platform)",
+    "evidence": "Agent A (mobile) and Agent B (platform) agreed that mobile will run its own release pipeline."
+   }
+  ],
+  "dependencies": "The two directors have disagreed all year about whether platform owns all pipelines, and it has not been settled."
+ },
+ "x26": {
+  "affected": [
+   {
+    "who": "marketing team",
+    "evidence": "Agent A (marketing) and Agent B (product) agreed to launch the campaign before the feature is finished."
+   },
+   {
+    "who": "product team",
+    "evidence": "Agent A (marketing) and Agent B (product) agreed to launch the campaign before the feature is finished."
+   }
+  ],
+  "dependencies": ""
+ },
+ "x27": {
+  "affected": [
+   {
+    "who": "team A",
+    "evidence": "Agent A (team A) and Agent B (team B) agreed team B will take over on-call for the shared queue."
+   },
+   {
+    "who": "team B",
+    "evidence": "Agent A (team A) and Agent B (team B) agreed team B will take over on-call for the shared queue."
+   }
+  ],
+  "dependencies": ""
+ },
+ "x28": {
+  "affected": [
+   {
+    "who": "Agent A (operations)",
+    "evidence": "Agent A (operations) and Agent B (facilities) agreed to move the backup generator test to Saturday."
+   },
+   {
+    "who": "Agent B (facilities)",
+    "evidence": "Agent A (operations) and Agent B (facilities) agreed to move the backup generator test to Saturday."
+   }
+  ],
+  "dependencies": "Whether the building management allows tests on weekends has not been checked."
+ },
+ "x29": {
+  "affected": [
+   {
+    "who": "Agent A (legal)",
+    "evidence": "Agent A (legal) and Agent B (marketing) agreed to publish the customer testimonial video."
+   },
+   {
+    "who": "Agent B (marketing)",
+    "evidence": "Agent A (legal) and Agent B (marketing) agreed to publish the customer testimonial video."
+   }
+  ],
+  "dependencies": ""
+ },
+ "x30": {
+  "affected": [
+   {
+    "who": "Agent A (IT)",
+    "evidence": "Agent A (IT) and Agent B (finance) agreed to retire the old expense app next Friday."
+   },
+   {
+    "who": "Agent B (finance)",
+    "evidence": "Agent A (IT) and Agent B (finance) agreed to retire the old expense app next Friday."
+   }
+  ],
+  "dependencies": "Nobody has checked whether any pending expense reports are still in it."
+ }
+}
