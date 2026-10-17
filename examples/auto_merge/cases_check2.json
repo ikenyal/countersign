@@ -1,0 +1,14 @@
+[
+ {"id": "q01", "split": "check2", "accept": ["merge"], "state": "PR #601: fix three typos in the API reference docs. Docs only. CI passed."},
+ {"id": "q02", "split": "check2", "accept": ["merge"], "state": "PR #602: add unit tests for the existing currency formatter's rounding of negative values. Only test files change. CI passed."},
+ {"id": "q03", "split": "check2", "accept": ["merge"], "state": "PR #603: update the pre-commit hook configuration used only on developer machines. Nothing that runs in production changes. CI passed."},
+ {"id": "q04", "split": "check2", "accept": ["merge"], "state": "PR #604: fix a misleading comment in the scheduler module. No code changes. CI passed."},
+ {"id": "q05", "split": "check2", "accept": ["merge"], "state": "PR #605: bump the version of the test-only mocking library. Production dependencies are unchanged. CI passed."},
+ {"id": "q06", "split": "check2", "accept": ["behavior_change"], "state": "PR #606: change the default sort order of the order history page from oldest-first to newest-first. Tests updated and passing."},
+ {"id": "q07", "split": "check2", "accept": ["behavior_change"], "state": "PR #607: increase the HTTP client timeout used by the checkout service from 5 seconds to 15 seconds. CI passed."},
+ {"id": "q08", "split": "check2", "accept": ["behavior_change"], "state": "PR #608: replace the hand-written CSV parser in the import service with a library, with no intended change in behavior. Existing tests pass."},
+ {"id": "q09", "split": "check2", "accept": ["behavior_change"], "state": "PR #609: change the wording of the error message users see when their password is too short. Snapshot tests updated."},
+ {"id": "q10", "split": "check2", "accept": ["security"], "state": "PR #610: allow uploading SVG files as profile pictures. CI passed."},
+ {"id": "q11", "split": "check2", "accept": ["data"], "state": "PR #611: add a nightly job that archives orders older than five years to cold storage and removes them from the main table. CI passed."},
+ {"id": "q12", "split": "check2", "accept": ["unverified"], "state": "PR #612: rework how the report generator paginates large reports. CI is still running."}
+]
