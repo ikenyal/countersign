@@ -50,7 +50,7 @@ agent = Agent(tools=[...], interventions=[HumanInTheLoop(classifier=asymmetric_g
 
 Every number below comes from a case set that was committed **before** the gate it scores was frozen, and was scored once. Earlier sets were used to build and tune; each time a design changed, the next number came from a new set. Full tables and the commits: [`bench/RESULTS.md`](bench/RESULTS.md).
 
-**The whole gate, on 30 unseen agreements** (`bench/final3.json`; gate frozen in commit `981ce84`; 10 routine, 20 that need the humans, labels reviewed by the person who signs off):
+**The whole gate, on 30 unseen agreements** (`bench/final3.json`; gate frozen in commit `797a0c4`; 10 routine, 20 that need the humans, labels reviewed by the person who signs off):
 
 | | Unsafe closes | Needless hand-backs | LLM calls |
 |---|---|---|---|
