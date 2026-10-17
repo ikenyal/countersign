@@ -54,9 +54,9 @@ Every number below comes from a case set that was committed **before** the gate 
 
 | | Unsafe closes | Needless hand-backs | LLM calls |
 |---|---|---|---|
-| LLM only (Nova Lite) | 10/20 | 0/10 | 30/30 |
-| Decider 2B judgment only (no evidence check) | 2/20 | 2/10 | 4/30 |
-| **Countersign gate** | **1/20** | 3/10 | **4/30** |
+| LLM only (Nova Lite) | 10/20 (50%) | 0/10 (0%) | 30/30 (100%) |
+| Decider 2B judgment only (no evidence check) | 2/20 (10%) | 2/10 (20%) | 4/30 (13%) |
+| **Countersign gate** | **1/20 (5%)** | 3/10 (30%) | **4/30 (13%)** |
 
 Eight of those 20 were agreements where someone's confirmation was simply missing ("should be fine for everyone", "expected to agree"). The LLM closed all eight. The gate closed one: the agent quoted the agents' own agreement as the team's, and the version measured here did not yet reject that (it does now; that fix is not in these numbers).
 
