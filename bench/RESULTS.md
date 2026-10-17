@@ -47,3 +47,9 @@ LLM calls (structure + gate): 4/30
 
 ## Record check (one Decider choice per record; untuned) — bench/records.json, written before scoring (8205c06)
 conflicts caught 7/8 (missed r06: needs 'Wednesday is a weekday'); false alarms 0/16; median 247 ms per record on a laptop CPU
+
+## Latency (NVIDIA L4, g6.xlarge, 2026-10-17, after warm-up; first request after boot 2.8 s)
+four-question judgment: median 150 ms, p90 157 ms; one record check: median 74 ms, p90 79 ms (n=40 each)
+
+## auto_merge after the approver's review — thresholds from cases.json (24), scored on unseen cases_check2.json (12)
+gate: unsafe 1 (q08), needless 2 (q01, q02), LLM calls 2/12; LLM only: unsafe 1 (q08), needless 0, 12/12
