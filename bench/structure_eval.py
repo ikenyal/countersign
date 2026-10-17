@@ -18,11 +18,14 @@ HERE = Path(__file__).parent
 QUALITY_FLAGS = {k: v for k, v in FLAG_THRESHOLDS.items() if k != "missing_info"}
 
 
+EXTRACT_TAG = "-nova-pro-v1"  # the agent fills the structure with Nova Pro
+
+
 def main(sets):
     rows_all = []
     for s in sets:
         cases = {c["id"]: c for c in json.loads((HERE / f"{s}.json").read_text())}
-        ex = json.loads((HERE / f"extract-{s}.json").read_text())
+        ex = json.loads((HERE / f"extract-{s}{EXTRACT_TAG}.json").read_text())
         raw = {r["id"]: r for r in json.loads((HERE / f"raw-{s}-v19-grounds.json").read_text())}
         for cid, c in cases.items():
             why = unconfirmed(ex[cid]["affected"], ex[cid]["dependencies"], c["state"])

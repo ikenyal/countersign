@@ -21,11 +21,13 @@ AFFECTED_DOC = (
     "Everyone this agreement affects: each side's human by role, and anyone else it touches "
     "(attendees, readers, owners, customers, partners). Do not list the agents themselves. "
     "For each, 'evidence' is the exact sentence from the situation that says this person or "
-    "group agreed or approved, copied word for word; empty if there is none."
+    "group agreed or approved, copied word for word; empty if there is none. A sentence "
+    "about what depends on the change is not a person: put it in 'dependencies'."
 )
 DEPENDENCIES_DOC = (
     "The exact sentence from the situation that says nothing else depends on this, or that "
-    "what depends on it was checked or updated, copied word for word; empty if there is none."
+    "what depends on it was checked or updated, copied word for word (for example 'no team "
+    "relies on Monday delivery' or 'nothing else consumes it'); empty if there is none."
 )
 
 AGREED_Q = "Does this sentence say that {who} agreed to or approved the change?"

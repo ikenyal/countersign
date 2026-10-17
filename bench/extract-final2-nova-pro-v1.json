@@ -10,11 +10,11 @@
     "evidence": "Agent A (accounting) and Agent B (sales ops) agreed to move the monthly invoice review from the 3rd to the 4th business day."
    },
    {
-    "who": "Two other attendees",
-    "evidence": "the two other attendees confirmed the new day works."
+    "who": "two other attendees",
+    "evidence": "the two other attendees confirmed the new day works"
    }
   ],
-  "dependencies": "no report or deadline depends on the review date."
+  "dependencies": "no report or deadline depends on the review date"
  },
  "w02": {
   "affected": [
@@ -27,40 +27,36 @@
     "evidence": "Agent A (QA) and Agent B (mobile) agreed that QA will run the smoke test on the staging build at 15:00 instead of 14:00."
    },
    {
-    "who": "Both leads",
-    "evidence": "Both leads approved."
+    "who": "QA lead",
+    "evidence": "Both leads approved"
+   },
+   {
+    "who": "Mobile lead",
+    "evidence": "Both leads approved"
    },
    {
     "who": "Release manager",
-    "evidence": "the release manager confirmed the release schedule is unaffected."
-   },
-   {
-    "who": "Others",
-    "evidence": "nobody else uses that staging slot."
+    "evidence": "the release manager confirmed the release schedule is unaffected"
    }
   ],
-  "dependencies": "the release manager confirmed the release schedule is unaffected."
+  "dependencies": "nobody else uses that staging slot"
  },
  "w03": {
   "affected": [
    {
     "who": "office admin",
-    "evidence": "Both humans signed off"
+    "evidence": "Agent A (office admin) and Agent B (facilities) agreed to switch the weekly office supply order from Monday to Tuesday."
    },
    {
     "who": "facilities",
-    "evidence": "Both humans signed off"
+    "evidence": "Agent A (office admin) and Agent B (facilities) agreed to switch the weekly office supply order from Monday to Tuesday."
    },
    {
     "who": "supplier",
-    "evidence": "the supplier confirmed Tuesday delivery at no extra cost"
-   },
-   {
-    "who": "team",
-    "evidence": "no team relies on Monday delivery"
+    "evidence": "the supplier confirmed Tuesday delivery at no extra cost."
    }
   ],
-  "dependencies": ""
+  "dependencies": "no team relies on Monday delivery"
  },
  "w04": {
   "affected": [
@@ -73,7 +69,7 @@
     "evidence": "Agent A (docs team) and Agent B (support) agreed to add three links to the FAQ page pointing to existing help articles."
    },
    {
-    "who": "Leads",
+    "who": "Both leads",
     "evidence": "Both leads approved the exact links"
    },
    {
@@ -94,15 +90,15 @@
     "evidence": "Agent A (team Kanto) and Agent B (team Kansai) agreed to rename their shared Slack channel from #kanto-kansai to #east-west-sync."
    },
    {
-    "who": "All 14 members",
-    "evidence": "all 14 members were asked and none objected."
+    "who": "Both managers",
+    "evidence": "Both managers approved"
    },
    {
-    "who": "Both managers",
-    "evidence": "Both managers approved."
+    "who": "All 14 members",
+    "evidence": "all 14 members were asked and none objected"
    }
   ],
-  "dependencies": "no integrations or bots post to the channel."
+  "dependencies": "no integrations or bots post to the channel"
  },
  "w06": {
   "affected": [
@@ -119,7 +115,7 @@
     "evidence": "the report's three readers confirmed they are fine with it."
    }
   ],
-  "dependencies": "The numbers and schedule do not change."
+  "dependencies": "the numbers and schedule do not change."
  },
  "w07": {
   "affected": [
@@ -140,7 +136,7 @@
     "evidence": "the three managers who forward it confirmed links work for them"
    }
   ],
-  "dependencies": "no other process reads the attachment."
+  "dependencies": "no other process reads the attachment"
  },
  "w08": {
   "affected": [
@@ -153,10 +149,6 @@
     "evidence": "Agent A (design) and Agent B (frontend) agreed to hold the design handoff in room 6 instead of room 5 on Thursday at the same time."
    },
    {
-    "who": "Both humans",
-    "evidence": "Both humans approved."
-   },
-   {
     "who": "Every attendee",
     "evidence": "Every attendee accepted the updated invite."
    }
@@ -167,11 +159,11 @@
   "affected": [
    {
     "who": "store A manager",
-    "evidence": "Both store managers approved."
+    "evidence": "Both store managers approved"
    },
    {
     "who": "store B manager",
-    "evidence": "Both store managers approved."
+    "evidence": "Both store managers approved"
    },
    {
     "who": "area manager",
@@ -213,15 +205,11 @@
  "w12": {
   "affected": [
    {
-    "who": "Agent A (warehouse)",
-    "evidence": "Agent A (warehouse) and Agent B (shipping) agreed that packing will start 30 minutes later each day to match the new truck schedule."
+    "who": "warehouse team lead",
+    "evidence": "The two team leads agreed."
    },
    {
-    "who": "Agent B (shipping)",
-    "evidence": "Agent A (warehouse) and Agent B (shipping) agreed that packing will start 30 minutes later each day to match the new truck schedule."
-   },
-   {
-    "who": "Team leads",
+    "who": "shipping team lead",
     "evidence": "The two team leads agreed."
    }
   ],
@@ -243,15 +231,15 @@
  "w14": {
   "affected": [
    {
-    "who": "Agent A (clinic reception)",
+    "who": "clinic reception",
     "evidence": "Agent A (clinic reception) and Agent B (clinic lab) agreed that blood samples will be collected at the lab window instead of the reception desk starting Monday."
    },
    {
-    "who": "Agent B (clinic lab)",
+    "who": "clinic lab",
     "evidence": "Agent A (clinic reception) and Agent B (clinic lab) agreed that blood samples will be collected at the lab window instead of the reception desk starting Monday."
    },
    {
-    "who": "Both supervisors",
+    "who": "supervisors",
     "evidence": "Both supervisors like the idea."
    }
   ],
@@ -266,10 +254,6 @@
    {
     "who": "Agent B (IT)",
     "evidence": "Agent A (events) and Agent B (IT) agreed to use the new video conferencing tool for next month's company-wide meeting instead of the usual one."
-   },
-   {
-    "who": "Company employees",
-    "evidence": "The agreement is for next month's company-wide meeting."
    }
   ],
   "dependencies": ""
@@ -298,10 +282,6 @@
     "evidence": "Agent A (product) and Agent B (engineering) agreed to remove the dark-mode toggle from this release."
    },
    {
-    "who": "CEO",
-    "evidence": "The CEO announced dark mode at last week's customer event."
-   },
-   {
     "who": "Customers",
     "evidence": "The CEO announced dark mode at last week's customer event."
    }
@@ -328,16 +308,16 @@
  "w19": {
   "affected": [
    {
+    "who": "reporting customer",
+    "evidence": "Support had promised the reporting customer a fix by the end of the quarter."
+   },
+   {
     "who": "Agent A (support)",
     "evidence": "Agent A (support) and Agent B (engineering) agreed to close the bug about slow exports as 'won't fix'."
    },
    {
     "who": "Agent B (engineering)",
     "evidence": "Agent A (support) and Agent B (engineering) agreed to close the bug about slow exports as 'won't fix'."
-   },
-   {
-    "who": "Reporting customer",
-    "evidence": "Support had promised the reporting customer a fix by the end of the quarter."
    }
   ],
   "dependencies": ""
@@ -355,6 +335,14 @@
   "affected": [
    {
     "who": "every employee",
+    "evidence": ""
+   },
+   {
+    "who": "Agent A (IT)",
+    "evidence": "Agent A (IT) and Agent B (finance) agreed to upgrade every employee's design software license to the premium tier."
+   },
+   {
+    "who": "Agent B (finance)",
     "evidence": "Agent A (IT) and Agent B (finance) agreed to upgrade every employee's design software license to the premium tier."
    }
   ],
@@ -371,7 +359,7 @@
     "evidence": "Agent A (sales) and Agent B (legal) agreed to sign the customer's version of the non-disclosure agreement instead of the company's standard one."
    },
    {
-    "who": "Customer",
+    "who": "customer",
     "evidence": "Agent A (sales) and Agent B (legal) agreed to sign the customer's version of the non-disclosure agreement instead of the company's standard one."
    }
   ],
@@ -399,10 +387,6 @@
    {
     "who": "Agent B (events)",
     "evidence": "Agent A (marketing) and Agent B (events) agreed to sponsor the regional developer conference at the gold level."
-   },
-   {
-    "who": "regional developer conference",
-    "evidence": "Agent A (marketing) and Agent B (events) agreed to sponsor the regional developer conference at the gold level."
    }
   ],
   "dependencies": ""
@@ -416,6 +400,10 @@
    {
     "who": "product",
     "evidence": "Agent A (platform) and Agent B (product) agreed platform will postpone its reliability work again to build a feature."
+   },
+   {
+    "who": "platform's lead",
+    "evidence": "Platform's lead has escalated twice this year that product keeps overriding reliability priorities."
    }
   ],
   "dependencies": ""
@@ -457,7 +445,7 @@
     "evidence": "Agent A (logistics) and Agent B (procurement) agreed to order pallets from a new supplier."
    }
   ],
-  "dependencies": "The agreement does not confirm whether the new supplier's pallets fit the warehouse racks."
+  "dependencies": "The agreement to order pallets from a new supplier has been made despite the fact that whether the new supplier's pallets fit the warehouse racks has not been checked."
  },
  "w29": {
   "affected": [
