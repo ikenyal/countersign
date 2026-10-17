@@ -11,7 +11,7 @@ Decision pattern: **#policy**. Generative models: **Amazon Nova Pro** (the agent
 The rules in this gate were not designed up front. They came from the person who countersigns, reviewing 178 labelled cases:
 
 1. **Judge by what an agreement touches, not by how it feels.** A first draft had "unwelcome news" as a reason to hand back. Every case was right to hand back, but because it broke a promise, or touched money, a contract, or people.
-2. **What is not written down is not confirmed.** "It should be fine for everyone" and "the other manager is expected to agree" are not agreement. In his words: *don't act on a guess.*
+2. **If it is not written down, treat it as not confirmed.** "It should be fine for everyone" and "the other manager is expected to agree" are not agreement. In his words: *don't act on a guess.*
 3. **Handing back is not doing nothing.** Prepare everything up to the point where only a human can decide, then hand it over.
 
 Neither Decider 2B nor the LLM could learn rule 2 from prose: both treated an agreement whose confirmations were missing like one where they were present. So rule 2 is enforced by structure and code, not by a model. Decider does what it is good at: many small, fast judgments.
