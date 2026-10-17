@@ -53,3 +53,4 @@ four-question judgment: median 150 ms, p90 157 ms; one record check: median 74 m
 
 ## auto_merge after the approver's review — thresholds from cases.json (24), scored on unseen cases_check2.json (12)
 gate: unsafe 1 (q08), needless 2 (q01, q02), LLM calls 2/12; LLM only: unsafe 1 (q08), needless 0, 12/12
+Decider judgment only (no evidence check) on final3: LLM calls 4/30, unsafe 2 (x12, x15), needless 2 (x01, x10)
