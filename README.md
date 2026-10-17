@@ -8,7 +8,7 @@ Decision pattern: **#policy**. Generative models: **Amazon Nova Pro** (the agent
 
 ## What the person who signs off taught us
 
-The rules in this gate were not designed up front. They came from the person who countersigns, reviewing 154 labelled cases over a week:
+The rules in this gate were not designed up front. They came from the person who countersigns, reviewing 178 labelled cases over a week:
 
 1. **Judge by what an agreement touches, not by how it feels.** A first draft had "unwelcome news" as a reason to hand back. Every case was right to hand back, but because it broke a promise, or touched money, a contract, or people.
 2. **What is not written down is not confirmed.** "It should be fine for everyone" and "the other manager is expected to agree" are not agreement. In his words: *don't act on a guess.*
@@ -60,7 +60,7 @@ Every number below comes from a case set that was committed **before** the gate 
 
 Eight of those 20 were agreements where someone's confirmation was simply missing ("should be fine for everyone", "expected to agree"). The LLM closed all eight. The gate closed one: the agent quoted the agents' own agreement as the team's, and the version measured here did not yet reject that (it does now; that fix is not in these numbers).
 
-**The record check, on 24 unseen record/change pairs** (`bench/records.json`, untuned): it caught 7 of 8 records holding a promise the change would break, with no false alarms on 16 records that agreed or were unrelated. The one it missed needed the inference "Wednesday is a weekday."
+**The record check, on 24 unseen record/change pairs** (`bench/records.json`, untuned, labels reviewed by the person who signs off): it caught 7 of 8 records holding a promise the change would break, with no false alarms on 16 records that agreed or were unrelated. The one it missed needed the inference "Wednesday is a weekday."
 
 **The reused gate, on 12 unseen pull requests** (`examples/auto_merge/cases_check2.json`): one unsafe merge (a refactor "meant to change nothing", which the LLM also merged), two needless hand-backs, 2 LLM calls; the LLM alone: one unsafe merge, no needless hand-backs, 12 calls.
 
@@ -70,7 +70,8 @@ Eight of those 20 were agreements where someone's confirmation was simply missin
 
 ## Limits
 
-- The cases are written in English by a coding agent and describe fictional teams. The labels of 154 cases were reviewed by the person who signs off; `bench/final2.json` and `bench/records.json` were not.
+- The cases are written in English by a coding agent and describe fictional teams. The labels of 178 cases were reviewed by the person who signs off; `bench/final2.json` was not.
+- The gate checks that each affected person agreed, not that they had the authority to. Reviewing the record check, the person who signs off flagged an employee's own "my manager agreed" as not enough: a transfer needs the manager or HR on record. Who may approve what is the next thing to encode.
 - 30 cases per set is small. Read the numbers as a rough size, not an error rate.
 - The structure check depends on the agent filling it in honestly; it fails closed (a missing or altered quote hands back), not open. Nova Lite was not accurate enough to fill it in, so the agent uses Nova Pro.
 - The demo's records are simulated. In a real deployment they would come from your wiki, mail and calendar.
