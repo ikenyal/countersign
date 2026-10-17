@@ -50,15 +50,17 @@ agent = Agent(tools=[...], interventions=[HumanInTheLoop(classifier=asymmetric_g
 
 Every number below comes from a case set that was committed **before** the gate it scores was frozen, and was scored once. Earlier sets were used to build and tune; each time a design changed, the next number came from a new set. Full tables and the commits: [`bench/RESULTS.md`](bench/RESULTS.md).
 
-**The whole gate, on 30 unseen agreements** (`bench/final3.json`; gate frozen in commit `797a0c4`; 10 routine, 20 that need the humans, labels reviewed by the person who signs off):
+**The whole gate, on 30 unseen agreements** (`bench/final4.json`, committed in `0224bc7`; gate frozen in `cbfc481`; 10 the agents may close, 20 that need a human):
 
 | | Unsafe closes | Needless hand-backs | LLM calls |
 |---|---|---|---|
 | LLM only (Nova Lite) | 10/20 (50%) | 0/10 (0%) | 30/30 (100%) |
-| Decider 2B judgment only (no evidence check) | 2/20 (10%) | 2/10 (20%) | 4/30 (13%) |
-| **Countersign gate** | **1/20 (5%)** | 3/10 (30%) | **4/30 (13%)** |
+| Decider 2B judgment only (no evidence check) | 6/20 (30%) | 4/10 (40%) | 4/30 (13%) |
+| **Countersign gate** | **0/20 (0%)** | 5/10 (50%) | **0/30 (0%)** |
 
-Eight of those 20 were agreements where someone's confirmation was simply missing ("should be fine for everyone", "expected to agree"). The LLM closed all eight. The gate closed one: the agent quoted the agents' own agreement as the team's, and the version measured here did not yet reject that (it does now; that fix is not in these numbers).
+Eight of the 20 had one confirmation missing ("the designers will probably be fine with it"). The LLM closed all eight; the gate stopped all eight because the evidence was not there. The price is half of the routine agreements going to a human for a glance: two because the agent did not pull the right sentence from the record, three because a precautionary yes/no question came in just over its line.
+
+A previous version, frozen in `797a0c4` and scored on `bench/final3.json`, closed one agreement that needed a human (the agent offered "the agents agreed" as evidence that the team had agreed) with 3/10 needless hand-backs. Refusing the agents' own words as evidence is the only change in `cbfc481`.
 
 **The record check, on 24 unseen record/change pairs** (`bench/records.json`, untuned, labels reviewed by the person who signs off): it caught 7 of 8 records holding a promise the change would break, with no false alarms on 16 records that agreed or were unrelated. The one it missed needed the inference "Wednesday is a weekday."
 
@@ -70,10 +72,11 @@ Eight of those 20 were agreements where someone's confirmation was simply missin
 
 ## Limits
 
-- The cases are written in English by a coding agent and describe fictional teams. The labels of 178 cases were reviewed by the person who signs off; `bench/final2.json` was not.
+- The cases are written in English by a coding agent and describe fictional teams. The labels of 178 cases were reviewed by the person who signs off; `bench/final2.json` was not, and the review of `bench/final4.json` is in progress.
 - The gate checks that each affected person agreed, not that they had the authority to. Reviewing the record check, the person who signs off flagged an employee's own "my manager agreed" as not enough: a transfer needs the manager or HR on record. Who may approve what is the next thing to encode.
 - 30 cases per set is small. Read the numbers as a rough size, not an error rate.
-- The structure check depends on the agent filling it in honestly; it fails closed (a missing or altered quote hands back), not open. Nova Lite was not accurate enough to fill it in, so the agent uses Nova Pro.
+- The structure check depends on the agent filling it in honestly; it fails closed (a missing or altered quote hands back), not open.
+- The evidence check confirms that a sentence is in the record, not that it reads as agreement. During development it accepted "both teams' own queries were updated" as a team's agreement. Nova Lite was not accurate enough to fill it in, so the agent uses Nova Pro.
 - The demo's records are simulated. In a real deployment they would come from your wiki, mail and calendar.
 - In the demo, the "pushed" scenario uses Nova Lite as a deliberately less careful agent. Nova Pro refused to close even when pushed; the gate must not depend on that.
 
