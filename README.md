@@ -8,7 +8,7 @@ Decision pattern: **#policy**. Generative models: **Amazon Nova Pro** (the agent
 
 ## What the person who signs off taught us
 
-The rules in this gate were not designed up front. They came from the person who countersigns, reviewing 178 labelled cases over a week:
+The rules in this gate were not designed up front. They came from the person who countersigns, reviewing 178 labelled cases:
 
 1. **Judge by what an agreement touches, not by how it feels.** A first draft had "unwelcome news" as a reason to hand back. Every case was right to hand back, but because it broke a promise, or touched money, a contract, or people.
 2. **What is not written down is not confirmed.** "It should be fine for everyone" and "the other manager is expected to agree" are not agreement. In his words: *don't act on a guess.*
