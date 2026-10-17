@@ -68,7 +68,7 @@ A previous version, frozen in `797a0c4` and scored on `bench/final3.json`, close
 
 **Speed** (NVIDIA L4, g6.xlarge, after warm-up): the four-question judgment takes a median of 150 ms; one record check takes 74 ms. A Nova Lite call from a laptop took a median of 472 ms.
 
-**Cost.** g6.xlarge is $0.8048 an hour on demand in us-east-1. Kept busy, that is about $0.03 per 1,000 judgments and $0.02 per 1,000 record checks. An idle GPU costs the same per hour, so at low volume a hosted LLM call is cheaper. Decider's case here is speed, many small decisions per agreement, and keeping internal records on your own instance.
+**Cost.** g6.xlarge is $0.8048 an hour on demand in us-east-1. Kept busy, that is about $0.03 per 1,000 judgments and $0.02 per 1,000 record checks. An idle GPU costs the same per hour, so at low volume a hosted LLM call is cheaper. Decider's case here is speed, many small decisions per agreement, and running the part that judges internal records on an instance you control.
 
 ## Limits
 
