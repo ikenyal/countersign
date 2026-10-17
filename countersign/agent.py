@@ -1,49 +1,104 @@
-"""Countersign demo: two agents settle an agreement; humans sign only when it matters.
+"""Countersign demo: two agents settle an agreement; humans countersign only when it matters.
 
-Our agent negotiates for its human. When it wants to commit the agreement, it
-calls close_agreement. Before that call runs, the asymmetric gate asks
-Decider 2B whether the agents may close it or the humans must countersign.
+Our agent negotiates for its human. Before it commits, it must show, from the company's
+records, that everyone the agreement affects has agreed and that nothing else depends on
+it. Then the gate decides:
+
+  1. Structure (code): every confirmation is a quote that really is in the record it cites.
+  2. Judgment (Decider 2B): does it break a promise, touch money/contracts/people, or sit
+     inside a bigger conflict? Hand back at any confidence; close only when confident.
+  3. Only when Decider is unsure about a close: ask the LLM.
+
+When the gate hands back, the agent does not just stop: it prepares everything up to the
+point where a human has to decide.
 
     python -m countersign.agent            # all demo scenarios
     python -m countersign.agent routine    # one of them
 """
 from __future__ import annotations
 
+import json
+import re
 import sys
 
 from strands import Agent, tool
 from strands.models import BedrockModel
 from strands.vended_interventions.hitl import HumanInTheLoop
+from strands.vended_interventions.hitl.classifier import ClassifierResult
 
-from countersign.gate import GateDecision, asymmetric_gate
+from countersign import records
+from countersign.gate import FLAG_THRESHOLDS, GateDecision, asymmetric_gate
+from countersign.structure import AFFECTED_DOC, DEPENDENCIES_DOC, unconfirmed_by_records
 
-MODEL_ID = "amazon.nova-lite-v1:0"
+AGENT_MODEL = "us.amazon.nova-pro-v1:0"   # fills the structure; Nova Lite was not accurate enough
 REGION = "us-east-1"
+SEEN: dict[str, str] = {}  # records the agent retrieved in this run; Decider reads them too
+QUALITY_FLAGS = {k: v for k, v in FLAG_THRESHOLDS.items() if k != "missing_info"}
 
-SYSTEM = ("You are an agent negotiating on behalf of a human with another team's agent. "
-          "When you and the other side have settled on something, call close_agreement once, "
-          "with a summary that states the agreement and every consequence of it: who gains, "
-          "who loses, what was already promised or approved, who has not been told yet, "
-          "which of the people it affects have agreed, and whether anything else depends on it. "
-          "Do not leave consequences out. If close_agreement is not approved, do not call it "
-          "again: stop and tell your human, in one or two sentences, what needs their attention.")
+SYSTEM = (
+    "You are an agent negotiating on behalf of a human with another team's agent. Before you close "
+    "anything, search the company records for where each affected person agreed and for what depends "
+    "on the change. Then call close_agreement once. Quote records word for word and cite their ids; "
+    "never cite your own or the other agent's words as anyone's agreement. If close_agreement is not "
+    "approved, do not call it again. You MUST then call prepare_for_humans with everything ready up to the decision "
+    "(drafts, alternatives, who to ask), then tell your human in two sentences what needs them."
+)
 
+REVIEW = ("Our side (design) and their side (QA) settled on moving the weekly review from Tue 10:00 to "
+          "Tue 14:00. Close it.")
+# Who an agreement affects comes from the negotiation, not from the agent that wants to close it.
 SCENARIOS = {
-    "routine": "Our side (design) and their side (QA) agreed to move the weekly review from Tue 10:00 to Tue 14:00. Both humans marked it movable, all four attendees accepted the new time, and nothing else is scheduled around the review. Close it.",
-    "commitment": "Our side (platform) and their side (finance) agreed to move the database migration from Oct 20 to Oct 27, after finance's quarter-end. Platform loses the week of buffer its lead promised the on-call team, who have not been told. Close it.",
-    "money": "Our side (support) and their side (sales) agreed that support will cover the new enterprise customer's weekend tickets starting next month, which needs one more contractor on the support budget. Close it.",
+    "routine": {"text": REVIEW, "affected": ["Mika", "Ren", "Sora", "Yui"]},
+    "unconfirmed": {"text": REVIEW, "affected": ["Mika", "Ren", "Sora", "Yui", "Kai"]},
+    "commitment": {"text": "Our side (platform) and their side (finance) settled on moving the database migration "
+                           "from Oct 20 to Oct 27, after finance's quarter-end. Close it.",
+                   "affected": ["Daichi", "Aoi", "on-call"]},
 }
 
 
 @tool
-def close_agreement(summary: str) -> str:
+def search_records(query: str) -> str:
+    """Search the company's meeting minutes, emails and calendar notes.
+
+    Args:
+        query: Keywords, for example a person's name and the topic.
+    """
+    found = records.search(query)
+    for r in found:
+        SEEN.setdefault(r["id"], r["text"])
+    print(f"  [search] {query!r} -> {[r['id'] for r in found]}")
+    return json.dumps(found, ensure_ascii=False)
+
+
+@tool
+def close_agreement(summary: str, affected: list[dict], dependencies: dict) -> str:
     """Commit the agreement on behalf of both humans.
 
     Args:
-        summary: The full agreement and every consequence of it, including who
-            gains, who loses, what was already promised, and who has not been told yet.
+        summary: The agreement and every consequence of it, including anything already promised or approved.
+        affected: One entry per person or group the agreement affects, each {"who", "evidence", "source"}.
+            evidence is the exact sentence from a record that says they agreed; source is that record's id.
+        dependencies: {"evidence", "source"}: the exact sentence from a record that says nothing else
+            depends on the change (or that what depends on it was updated), and that record's id.
     """
     return f"Agreement committed: {summary}"
+
+
+@tool
+def prepare_for_humans(ready: str, decision_needed: str, ask: str) -> str:
+    """Hand the agreement back with everything prepared up to the point a human must decide.
+
+    Args:
+        ready: What is already prepared (drafts, options, alternatives).
+        decision_needed: The one decision only a human can make, and why.
+        ask: Who to ask, and a draft of the message to them.
+    """
+    print(f"  [prepared] ready: {ready[:160]}\n             decide: {decision_needed[:160]}\n             ask: {ask[:200]}")
+    return "Handed to the humans."
+
+
+close_agreement.tool_spec["inputSchema"]["json"]["properties"]["affected"]["description"] += " " + AFFECTED_DOC
+close_agreement.tool_spec["inputSchema"]["json"]["properties"]["dependencies"]["description"] += " " + DEPENDENCIES_DOC
 
 
 def show(d: GateDecision) -> None:
@@ -53,23 +108,55 @@ def show(d: GateDecision) -> None:
 
 
 def human_countersigns(prompt: str, **kwargs) -> str:
-    print(f"  [human] asked to countersign: {prompt}")
-    print("  [human] (demo: the human holds it for a conversation)")
-    return "n"
+    print(f"  [human] asked to countersign: {prompt.splitlines()[0][:200]}")
+    return "n"  # demo: the human holds it for a conversation
+
+
+def countersign_gate(conversation: str, required: list[str]):
+    """The classifier: structure first (code), then judgment (Decider 2B), only for close_agreement."""
+    def state_of(i: dict) -> str:
+        confirmed = "; ".join(f"{a.get('who')} agreed (\"{a.get('evidence')}\")" for a in i.get("affected", []))
+        deps = (i.get("dependencies") or {}).get("evidence", "")
+        read = " ".join(f"[{rid}] {t}" for rid, t in SEEN.items())
+        return (f"{i.get('summary', '')} Confirmed on record: {confirmed}. Nothing else depends on it: \"{deps}\". "
+                f"Records the agent read: {read}")
+
+    judge = asymmetric_gate(state_of, flag_thresholds=QUALITY_FLAGS, on_decision=show)
+    sources = {rid: r["text"] for rid, r in records.RECORDS.items()} | {"conversation": conversation}
+
+    def classify(event, **kwargs) -> ClassifierResult:
+        if event.tool_use["name"] != "close_agreement":
+            return ClassifierResult(False, "no commitment")
+        i = event.tool_use["input"]
+        for a in i.get("affected", []):
+            print(f"  [cites] {a.get('who')}: \"{a.get('evidence', '')[:70]}\" ({a.get('source')})")
+        listed = " | ".join(a.get("who", "") for a in i.get("affected", [])).lower()
+        left_out = [p for p in required if p.lower() not in listed]
+        why = (f"the agent left out {', '.join(left_out)}" if left_out
+               else unconfirmed_by_records(i.get("affected", []), i.get("dependencies", {}), sources))
+        if why:
+            print(f"  [gate] structure     -> HAND BACK to the humans: {why}")
+            return ClassifierResult(True, f"Not confirmed on record: {why}")
+        return judge(event, **kwargs)
+
+    return classify
 
 
 def run(name: str) -> None:
-    print(f"\n=== {name} ===\n  {SCENARIOS[name]}")
+    sc = SCENARIOS[name]
+    task = f"{sc['text']} It affects: {', '.join(sc['affected'])}."
+    print(f"\n=== {name} ===\n  {task}")
     agent = Agent(
-        model=BedrockModel(model_id=MODEL_ID, region_name=REGION, temperature=0),
-        tools=[close_agreement],
+        model=BedrockModel(model_id=AGENT_MODEL, region_name=REGION, temperature=0),
+        tools=[search_records, close_agreement, prepare_for_humans],
         system_prompt=SYSTEM,
-        interventions=[HumanInTheLoop(classifier=asymmetric_gate(on_decision=show),
-                                      ask=human_countersigns)],
+        interventions=[HumanInTheLoop(classifier=countersign_gate(task, sc["affected"]), ask=human_countersigns)],
         callback_handler=None,
     )
-    result = agent(SCENARIOS[name])
-    print(f"  [agent] {str(result).strip()[:400]}")
+    SEEN.clear()
+    result = agent(task)
+    text = re.sub(r"<thinking>.*?</thinking>", "", str(result), flags=re.S).strip()
+    print(f"  [agent] {text[:500]}")
 
 
 if __name__ == "__main__":

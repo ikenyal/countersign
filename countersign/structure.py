@@ -71,3 +71,30 @@ def unconfirmed(affected: list[dict], dependencies: str, source: str, *,
     if use_decider and decider_yes(DEPENDS_Q, dependencies, url) < min_yes:
         return "the quote does not say that nothing else depends on it"
     return None
+
+
+def unconfirmed_by_records(affected: list[dict], dependencies: dict, sources: dict[str, str]) -> str | None:
+    """Like unconfirmed(), but each quote cites the record it came from.
+
+    affected:     [{"who", "evidence", "source"}], one per affected person or group.
+    dependencies: {"evidence", "source"}.
+    sources:      record id -> text (minutes, emails, the negotiation transcript).
+
+    A quote counts only if it appears word for word in the record it cites, and only
+    if it is not the agents' own words: the agents agreeing is not anyone else agreeing.
+    """
+    def shown(ev: dict) -> bool:
+        text = sources.get(ev.get("source", ""), "")
+        q = ev.get("evidence", "")
+        return quoted(q, text) and not re.search(r"\bagent\b", q, re.I)
+
+    affected = [a for a in affected
+                if not re.match(r"\s*(agent\b|none\b|n/?a\b|nobody\b)", a.get("who", ""), re.I)]
+    if not affected:
+        return "nobody affected is listed"
+    for a in affected:
+        if not shown(a):
+            return f"no record shows that {a.get('who', 'someone')} agreed"
+    if not shown(dependencies or {}):
+        return "no record shows that nothing else depends on it"
+    return None
