@@ -21,13 +21,16 @@ def main() -> None:
     ap.add_argument("cases")
     ap.add_argument("--model-tag", required=True, help="label for the Decider checkpoint being served")
     ap.add_argument("--url", default="http://127.0.0.1:8010/v1/systemone")
+    ap.add_argument("--variant", default="current", help="wording variant from bench/variants.py")
     a = ap.parse_args()
 
     cases = json.loads(Path(a.cases).read_text())
-    llm = bedrock_llm()
+    from bench.variants import VARIANTS
+    v = VARIANTS[a.variant]
+    llm = bedrock_llm(question=v["question"], options=v["options"])
     rows = []
     for c in cases:
-        t0 = time.perf_counter(); d, flags = ask_decider_all(c["state"], url=a.url); dm = (time.perf_counter() - t0) * 1000
+        t0 = time.perf_counter(); d, flags = ask_decider_all(c["state"], a.url, v["question"], v["options"], v["flags"]); dm = (time.perf_counter() - t0) * 1000
         t1 = time.perf_counter(); l = llm(c["state"]); lm = (time.perf_counter() - t1) * 1000
         rows.append({"id": c["id"], "accept": c["accept"], "choice": d["choice"],
                      "confidence": d["confidence"], "probabilities": d.get("probabilities", {}), "flags": flags,

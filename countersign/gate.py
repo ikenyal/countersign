@@ -30,21 +30,23 @@ from strands.vended_interventions.hitl.classifier import ClassifierResult
 
 # The typed question and option set (taxonomy v2).
 # The hand-back reasons follow how the person who signs off actually decides:
-# by what the agreement touches, not by how it will feel.
+# by what the agreement touches, not by how it will feel. And what is not written
+# down counts as not confirmed: an agreement is routine only when the description
+# says everyone affected agreed and nothing else depends on it.
 QUESTION = ("Two agents negotiated this agreement on behalf of their humans. "
             "Can the agents close it themselves, or must it go back to the humans?")
 OPTIONS = {
-    "close": "Routine. Both sides' stated constraints are met and nobody loses something they care about.",
+    "close": "Routine. From what the description says, the people it affects are fine with it, nothing else depends on it, and nobody loses something they care about.",
     "breaks_commitment": "It undoes something someone was already promised, approved for, told to expect, or currently relies on.",
     "money_contract_people": "It changes money, a budget, a contract, or headcount and hiring.",
     "bigger_conflict": "The two teams disagree about more than this one item; the disagreement is about priorities or ownership.",
-    "missing_info": "A constraint or fact needed to decide is unknown or not stated.",
+    "missing_info": "The description gives no grounds to believe that the people it affects are fine with it or that nothing else depends on it; or another fact needed to decide is unknown.",
 }
 REASONS = {
     "breaks_commitment": "it undoes something someone was already promised",
     "money_contract_people": "it touches money, a contract, or headcount",
     "bigger_conflict": "the teams disagree about more than this one item",
-    "missing_info": "a fact needed to decide is missing",
+    "missing_info": "it gives no grounds that the people it affects are fine and nothing depends on it",
 }
 
 # One yes/no question per hand-back reason. Asked together in one request.
@@ -54,13 +56,14 @@ FLAGS = {
     "breaks_commitment": "Does closing this undo something someone was already promised, approved for, told to expect, or currently relies on?",
     "money_contract_people": "Does this change money, a budget, a price, payment terms, a contract, or who is hired, transferred, or paid?",
     "bigger_conflict": "Do the two teams disagree about more than this one item, such as who owns something or whose priorities win?",
-    "missing_info": "Is a fact needed to make this decision still unknown, unchecked, or unconfirmed?",
+    "missing_info": "Does the description give no grounds to believe that the people this affects are fine with it and that nothing else depends on it, or leave another needed fact unknown?",
 }
 
 # Where each flag vetoes a close. Measured, not chosen: the 90th percentile of each flag's
-# P(true) on the 20 routine cases in bench/dev.json + bench/test.json (Decider v19).
+# P(true) on the 22 routine cases in bench/dev.json + test.json + final.json (Decider v19),
+# after the approver's label review.
 # Re-measure for your own decision with bench/analyze.py.
-FLAG_THRESHOLDS = {"breaks_commitment": 0.3731, "money_contract_people": 0.3089, "bigger_conflict": 0.3461, "missing_info": 0.6347}
+FLAG_THRESHOLDS = {"breaks_commitment": 0.4004, "money_contract_people": 0.3118, "bigger_conflict": 0.347, "missing_info": 0.7195}
 
 
 @dataclass
