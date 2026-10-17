@@ -62,7 +62,7 @@ def unconfirmed(affected: list[dict], dependencies: str, source: str, *,
         return "nobody affected is listed"
     for a in affected:
         who, ev = a.get("who", "someone"), a.get("evidence", "")
-        if not quoted(ev, source):
+        if not quoted(ev, source) or re.search(r"\bagent\b", ev, re.I):
             return f"no quote shows that {who} agreed"
         if use_decider and decider_yes(AGREED_Q.format(who=who), ev, url) < min_yes:
             return f"the quote does not say that {who} agreed"
