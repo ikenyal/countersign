@@ -65,6 +65,12 @@ FLAGS = {
 # Re-measure for your own decision with bench/analyze.py.
 FLAG_THRESHOLDS = {"breaks_commitment": 0.4004, "money_contract_people": 0.3118, "bigger_conflict": 0.347, "missing_info": 0.7195}
 
+# The missing-information flag did not separate agreements whose confirmations were
+# present from those where one was missing (it ran as high or higher on the complete
+# ones). Countersign checks confirmations with code instead (countersign/structure.py),
+# so by default only the promise, money and conflict flags can veto a close.
+DEFAULT_FLAG_THRESHOLDS = {k: v for k, v in FLAG_THRESHOLDS.items() if k != "missing_info"}
+
 
 @dataclass
 class GateDecision:
@@ -145,7 +151,7 @@ def asymmetric_gate(
 
     state_of:        turns the tool call's input into the state Decider reads.
     threshold:       the confidence a close needs before it is trusted without the LLM.
-    flag_thresholds: per-reason P(true) at which a flag vetoes a close; defaults to FLAG_THRESHOLDS.
+    flag_thresholds: per-reason P(true) at which a flag vetoes a close; defaults to DEFAULT_FLAG_THRESHOLDS.
     question, options, flags: your own decision. `close_option` names the option that lets
                      the agent act alone; every other option is a reason to hand back.
     llm:             the second opinion; defaults to Nova Lite on Bedrock with the same question.
@@ -153,7 +159,7 @@ def asymmetric_gate(
     """
     decider = decider or (lambda s: ask_decider_all(s, decider_url, question, options, flags))
     second_opinion = llm or bedrock_llm(question=question, options=options, close_option=close_option)
-    th = FLAG_THRESHOLDS if flag_thresholds is None else flag_thresholds
+    th = DEFAULT_FLAG_THRESHOLDS if flag_thresholds is None else flag_thresholds
 
     def classify(event, **kwargs) -> ClassifierResult:
         state = state_of(event.tool_use["input"])

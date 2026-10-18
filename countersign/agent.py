@@ -27,13 +27,13 @@ from strands.vended_interventions.hitl import HumanInTheLoop
 from strands.vended_interventions.hitl.classifier import ClassifierResult
 
 from countersign import records
-from countersign.gate import FLAG_THRESHOLDS, GateDecision, asymmetric_gate, conflicting_records
+from countersign.gate import DEFAULT_FLAG_THRESHOLDS, GateDecision, asymmetric_gate, conflicting_records
 from countersign.structure import AFFECTED_DOC, DEPENDENCIES_DOC, unconfirmed_by_records
 
 AGENT_MODEL = "us.amazon.nova-pro-v1:0"   # fills the structure; Nova Lite was not accurate enough
 REGION = "us-east-1"
 SEEN: dict[str, str] = {}  # records the agent retrieved in this run; Decider reads them too
-QUALITY_FLAGS = {k: v for k, v in FLAG_THRESHOLDS.items() if k != "missing_info"}
+QUALITY_FLAGS = DEFAULT_FLAG_THRESHOLDS  # promise, money, conflict; confirmations are checked by code
 
 SYSTEM = (
     "You are an agent negotiating on behalf of a human with another team's agent. Before you close "
