@@ -4,6 +4,8 @@ Two agents settle the routine agreements. Humans countersign only the ones that 
 
 Countersign is a [Strands Agents](https://strandsagents.com) agent that negotiates for its human with another team's agent. Before it commits anything, it has to show, from the company's own records, that everyone the agreement affects has agreed. Then a gate built on **Strands Decider 2B** decides whether the agents may close it themselves, or whether it goes back to the humans with everything prepared up to the decision.
 
+Demo video (1:48): https://youtu.be/24JUh9kNzmo
+
 Decision pattern: **#policy**. Generative models: **Amazon Nova Pro** (the agent) and **Amazon Nova Lite** (second opinion), on Amazon Bedrock.
 
 ## What the person who signs off taught us
