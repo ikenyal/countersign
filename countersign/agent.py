@@ -56,7 +56,7 @@ SCENARIOS = {
     "routine": {"text": REVIEW, "change": "Move the weekly review from Tue 10:00 to Tue 14:00.",
                 "affected": ["Mika", "Ren", "Sora", "Yui"]},
     "unconfirmed": {"text": REVIEW, "change": "Move the weekly review from Tue 10:00 to Tue 14:00.",
-                    "affected": ["Mika", "Ren", "Sora", "Yui", "Kai"]},
+                    "affected": ["Mika", "Ren", "Sora", "Yui", "team manager"]},
     "commitment": {"text": "Our side (platform) and their side (finance) settled on moving the database migration "
                            "from Oct 20 to Oct 27, after finance's quarter-end. Close it.",
                    "change": MIGRATION, "affected": ["Daichi", "Aoi", "on-call"]},

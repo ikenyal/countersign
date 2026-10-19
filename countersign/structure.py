@@ -84,8 +84,8 @@ def names_them(ev: dict, name: str, sources: dict[str, str]) -> bool:
     """True if the record cited as someone's agreement mentions that person or group by name.
 
     Found while recording the demo: the agent offered a calendar note ("Nothing else is
-    scheduled around the weekly review") as Kai's agreement. The sentence was real and not
-    the agents' own words, so it passed. A record that says Kai agreed has to name Kai.
+    scheduled around the weekly review") as one attendee's agreement. The sentence was real and
+    not the agents' own words, so it passed. A record that says someone agreed has to name them.
     """
     text = sources.get((ev or {}).get("source", ""), "")
     return name.lower() in text.lower()
