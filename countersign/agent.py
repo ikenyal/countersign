@@ -29,7 +29,7 @@ from strands.vended_interventions.hitl.classifier import ClassifierResult
 from countersign import present as P
 from countersign import records
 from countersign.gate import DEFAULT_FLAG_THRESHOLDS, GateDecision, asymmetric_gate, record_verdicts
-from countersign.structure import AFFECTED_DOC, DEPENDENCIES_DOC, on_record, unconfirmed_by_records
+from countersign.structure import AFFECTED_DOC, DEPENDENCIES_DOC, names_them, on_record, unconfirmed_by_records
 
 AGENT_MODEL = "us.amazon.nova-pro-v1:0"   # fills the structure; Nova Lite was not accurate enough
 REGION = "us-east-1"
@@ -162,13 +162,16 @@ def countersign_gate(conversation: str, required: list[str], change: str):
 
         P.step(2, "Every agreement is on record (code)")
         for a in affected:
-            ok = on_record(a, sources)
-            P.line(ok, a.get("who", "?"), f'"{a.get("evidence", "")[:48]}"' if ok else "no evidence on record",
+            name = next((p for p in required if p.lower() in a.get("who", "").lower()), None)
+            ok = on_record(a, sources) and (name is None or names_them(a, name, sources))
+            detail = (f'"{a.get("evidence", "")[:48]}"' if ok else
+                      f"cited record does not mention {name}" if on_record(a, sources) else "no evidence on record")
+            P.line(ok, a.get("who", "?"), detail,
                    log=f'  [cites] {a.get("who")}: "{a.get("evidence", "")[:70]}" ({a.get("source")})')
         deps_ok = on_record(i.get("dependencies") or {}, sources)
         P.line(deps_ok, "nothing else depends on it", "on record" if deps_ok else "no record says so")
         if not left_out:
-            why = unconfirmed_by_records(affected, i.get("dependencies", {}), sources)
+            why = unconfirmed_by_records(affected, i.get("dependencies", {}), sources, required)
             if why:
                 reasons.append(why)
 

@@ -80,15 +80,29 @@ def on_record(ev: dict, sources: dict[str, str]) -> bool:
     return quoted(q, text) and not re.search(r"\bagent\b", q, re.I)
 
 
-def unconfirmed_by_records(affected: list[dict], dependencies: dict, sources: dict[str, str]) -> str | None:
+def names_them(ev: dict, name: str, sources: dict[str, str]) -> bool:
+    """True if the record cited as someone's agreement mentions that person or group by name.
+
+    Found while recording the demo: the agent offered a calendar note ("Nothing else is
+    scheduled around the weekly review") as Kai's agreement. The sentence was real and not
+    the agents' own words, so it passed. A record that says Kai agreed has to name Kai.
+    """
+    text = sources.get((ev or {}).get("source", ""), "")
+    return name.lower() in text.lower()
+
+
+def unconfirmed_by_records(affected: list[dict], dependencies: dict, sources: dict[str, str],
+                           required: list[str] | None = None) -> str | None:
     """Like unconfirmed(), but each quote cites the record it came from.
 
     affected:     [{"who", "evidence", "source"}], one per affected person or group.
     dependencies: {"evidence", "source"}.
     sources:      record id -> text (minutes, emails, the negotiation transcript).
+    required:     the names of everyone affected, as given by the negotiation (not the agent).
 
     A quote counts only if it appears word for word in the record it cites, and only
     if it is not the agents' own words: the agents agreeing is not anyone else agreeing.
+    With `required`, the record cited for each person must also name that person.
     """
     shown = lambda ev: on_record(ev, sources)
 
@@ -99,6 +113,12 @@ def unconfirmed_by_records(affected: list[dict], dependencies: dict, sources: di
     for a in affected:
         if not shown(a):
             return f"no record shows that {a.get('who', 'someone')} agreed"
+    for name in required or []:
+        entry = next((a for a in affected if name.lower() in a.get("who", "").lower()), None)
+        if entry is None:
+            return f"nobody listed as {name}"
+        if not names_them(entry, name, sources):
+            return f"the record cited for {name} does not mention {name}"
     if not shown(dependencies or {}):
         return "no record shows that nothing else depends on it"
     return None
