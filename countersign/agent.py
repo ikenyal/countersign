@@ -33,6 +33,7 @@ from countersign.structure import AFFECTED_DOC, DEPENDENCIES_DOC, names_them, on
 
 AGENT_MODEL = "us.amazon.nova-pro-v1:0"   # fills the structure; Nova Lite was not accurate enough
 REGION = "us-east-1"
+STATE = {"handed_back": False, "prepared": False}  # rule 3 is enforced by code, not left to the agent
 SEEN: dict[str, str] = {}  # records the agent retrieved in this run; Decider reads them too
 QUALITY_FLAGS = DEFAULT_FLAG_THRESHOLDS  # promise, money, conflict; confirmations are checked by code
 
@@ -107,6 +108,7 @@ def prepare_for_humans(ready: str, decision_needed: str, ask: str) -> str:
         decision_needed: The one decision only a human can make, and why.
         ask: Who to ask, and a draft of the message to them.
     """
+    STATE["prepared"] = True
     P.prepared(ready, decision_needed, ask)
     return "Handed to the humans."
 
@@ -187,9 +189,11 @@ def countersign_gate(conversation: str, required: list[str], change: str):
         if reasons:
             P.line(None, "skipped", "already going back to the humans")
             P.verdict(True, reasons)
+            STATE["handed_back"] = True
             return ClassifierResult(True, "Needs the humans: " + "; ".join(reasons))
         result = judge(event, **kwargs)
         P.verdict(result.requires_human_in_the_loop, [result.reason] if result.requires_human_in_the_loop else [])
+        STATE["handed_back"] = STATE["handed_back"] or result.requires_human_in_the_loop
         return result
 
     return classify
@@ -207,7 +211,12 @@ def run(name: str) -> None:
         callback_handler=None,
     )
     SEEN.clear()
+    STATE.update(handed_back=False, prepared=False)
     result = agent(task)
+    if STATE["handed_back"] and not STATE["prepared"]:
+        # Rule 3: never hand back empty-handed. If the agent skipped it, ask once more.
+        result = agent("close_agreement was not approved. Call prepare_for_humans now, with everything "
+                       "ready up to the decision, then tell your human what needs them.")
     text = re.sub(r"<thinking>.*?</thinking>", "", str(result), flags=re.S).strip()
     P.agent_says(text)
 
