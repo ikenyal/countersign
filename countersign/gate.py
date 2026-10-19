@@ -104,8 +104,12 @@ def ask_decider_all(state: str, url: str = "http://127.0.0.1:8010/v1/systemone",
     body = json.dumps({"state": state, "questions": qs}).encode()
     req = urllib.request.Request(url, body, {"content-type": "application/json"})
     with urllib.request.urlopen(req, timeout=20) as r:
-        a = json.load(r)["answers"]
-    return a["gate"], {k: float(a[f"flag_{k}"]["noul"]) for k in flags}
+        resp = json.load(r)
+    a = resp["answers"]
+    gate = dict(a["gate"])
+    if "latency_ms" in resp:  # Decider's own time, without the network
+        gate["latency_ms"] = float(resp["latency_ms"])
+    return gate, {k: float(a[f"flag_{k}"]["noul"]) for k in flags}
 
 
 def bedrock_llm(model_id: str = "amazon.nova-lite-v1:0", region: str = "us-east-1",
@@ -170,7 +174,9 @@ def asymmetric_gate(
             label = second_opinion(state)
         hand_back = label != close_option
         if on_decision:
-            on_decision(GateDecision(path, label, conf, hand_back, (time.perf_counter() - t0) * 1000))
+            wall = (time.perf_counter() - t0) * 1000
+            ms = wall if path == "decider->llm" else float(answer.get("latency_ms", wall))
+            on_decision(GateDecision(path, label, conf, hand_back, ms))
         why = reasons.get(label, "routine")
         if path == "decider->llm":
             return ClassifierResult(hand_back, f"LLM second opinion: {why} (Decider 2B was unsure: {conf:.2f})")
@@ -225,8 +231,10 @@ def record_verdicts(change: str, records: dict[str, str],
         req = urllib.request.Request(url, body, {"content-type": "application/json"})
         t0 = time.perf_counter()
         with urllib.request.urlopen(req, timeout=20) as r:
-            a = json.load(r)["answers"]["r"]
-        out[rid] = (a["choice"], float(a["confidence"]), (time.perf_counter() - t0) * 1000)
+            resp = json.load(r)
+        a = resp["answers"]["r"]
+        ms = float(resp.get("latency_ms", (time.perf_counter() - t0) * 1000))  # Decider's own time
+        out[rid] = (a["choice"], float(a["confidence"]), ms)
     return out
 
 

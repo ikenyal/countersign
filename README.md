@@ -66,9 +66,9 @@ A previous version, frozen in `797a0c4` and scored on `bench/final3.json`, close
 
 **The reused gate, on 12 unseen pull requests** (`examples/auto_merge/cases_check2.json`): one unsafe merge (a refactor "meant to change nothing", which the LLM also merged), two needless hand-backs, 2 LLM calls; the LLM alone: one unsafe merge, no needless hand-backs, 12 calls.
 
-**Speed** (NVIDIA L4, g6.xlarge, after warm-up): the four-question judgment takes a median of 150 ms; one record check takes 74 ms. A Nova Lite call from a laptop took a median of 472 ms.
+**Speed** (NVIDIA L4, g6.xlarge, after warm-up): Decider itself takes a median of 260 ms for the whole judgment (one choice and four yes/no questions) and 84 ms for one record check (measured with the real questions, 2026-10-19). A Nova Lite call from a laptop took a median of 472 ms.
 
-**Cost.** g6.xlarge is $0.8048 an hour on demand in us-east-1. Kept busy, that is about $0.03 per 1,000 judgments and $0.02 per 1,000 record checks. An idle GPU costs the same per hour, so at low volume a hosted LLM call is cheaper. Decider's case here is speed, many small decisions per agreement, and running the part that judges internal records on an instance you control.
+**Cost.** g6.xlarge is $0.8048 an hour on demand in us-east-1. Kept busy, that is about $0.06 per 1,000 judgments and $0.02 per 1,000 record checks. An idle GPU costs the same per hour, so at low volume a hosted LLM call is cheaper. Decider's case here is speed, many small decisions per agreement, and running the part that judges internal records on an instance you control.
 
 ## Limits
 

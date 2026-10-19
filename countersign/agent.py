@@ -117,7 +117,7 @@ close_agreement.tool_spec["inputSchema"]["json"]["properties"]["dependencies"]["
 
 def show(d: GateDecision) -> None:
     verdict = "HAND BACK to the humans" if d.hand_back else "agents may CLOSE"
-    P.line(not d.hand_back, f"Decider: {d.choice}", f"confidence {d.confidence:.2f} · {d.ms:.0f} ms ({d.path})",
+    P.line(not d.hand_back, f"Decider: {d.choice}", f"confidence {d.confidence:.2f} · {d.ms:.0f} ms on the GPU",
            log=f"  [gate] {d.path:13s} choice={d.choice:22s} confidence={d.confidence:.2f} {d.ms:6.0f} ms -> {verdict}")
 
 
@@ -175,7 +175,7 @@ def countersign_gate(conversation: str, required: list[str], change: str):
         P.step(3, "Each record, one at a time (Decider 2B)")
         for rid, (choice, conf, ms) in record_verdicts(change, dict(SEEN)).items():
             bad = choice == "conflicts"
-            P.line(False if bad else None, rid, f"{choice.upper() if bad else choice} {conf:.2f} · {ms:.0f} ms",
+            P.line(False if bad else None, rid, f"{choice.upper() if bad else choice} {conf:.2f} · {ms:.0f} ms on the GPU",
                    log=f"  [gate] record check  -> {rid} conflicts with the change (confidence {conf:.2f})" if bad else None)
             if bad:
                 reasons.append(f"{rid} holds a promise or plan this would break")

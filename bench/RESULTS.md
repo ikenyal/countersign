@@ -63,3 +63,6 @@ LLM calls (structure + gate): 0/30
   blocked routine y03: no quote shows that data lead agreed
   blocked routine y10: no quote shows that nothing else depends on it
 Decider judgment only (no evidence check): LLM calls 4/30
+
+## Latency with the real questions (2026-10-19, NVIDIA L4, Decider's own latency_ms, after warm-up)
+whole judgment (one choice + four yes/no, real option text): median 260 ms (258-262); one record check: median 84 ms (83-86). The earlier 150 ms / 74 ms were measured with short placeholder questions.
