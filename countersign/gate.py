@@ -214,17 +214,24 @@ RECORD_OPTIONS = {
 }
 
 
-def conflicting_records(change: str, records: dict[str, str],
-                        url: str = "http://127.0.0.1:8010/v1/systemone") -> dict[str, float]:
-    """Return {record id: confidence} for every record Decider says the change would conflict with."""
-    found = {}
+def record_verdicts(change: str, records: dict[str, str],
+                    url: str = "http://127.0.0.1:8010/v1/systemone") -> dict[str, tuple[str, float, float]]:
+    """Ask Decider about each record on its own: {record id: (choice, confidence, milliseconds)}."""
+    out = {}
     for rid, text in records.items():
         body = json.dumps({"state": f"Proposed change: {change}\nRecord: {text}",
                            "questions": {"r": {"type": "choice", "instructions": RECORD_QUESTION,
                                                "criteria": RECORD_OPTIONS}}}).encode()
         req = urllib.request.Request(url, body, {"content-type": "application/json"})
+        t0 = time.perf_counter()
         with urllib.request.urlopen(req, timeout=20) as r:
             a = json.load(r)["answers"]["r"]
-        if a["choice"] == "conflicts":
-            found[rid] = float(a["confidence"])
-    return found
+        out[rid] = (a["choice"], float(a["confidence"]), (time.perf_counter() - t0) * 1000)
+    return out
+
+
+def conflicting_records(change: str, records: dict[str, str],
+                        url: str = "http://127.0.0.1:8010/v1/systemone") -> dict[str, float]:
+    """Return {record id: confidence} for every record Decider says the change would conflict with."""
+    return {rid: conf for rid, (choice, conf, _) in record_verdicts(change, records, url).items()
+            if choice == "conflicts"}

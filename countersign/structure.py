@@ -73,6 +73,13 @@ def unconfirmed(affected: list[dict], dependencies: str, source: str, *,
     return None
 
 
+def on_record(ev: dict, sources: dict[str, str]) -> bool:
+    """True if the evidence sentence is in the record it cites and is not the agents' own words."""
+    text = sources.get((ev or {}).get("source", ""), "")
+    q = (ev or {}).get("evidence", "")
+    return quoted(q, text) and not re.search(r"\bagent\b", q, re.I)
+
+
 def unconfirmed_by_records(affected: list[dict], dependencies: dict, sources: dict[str, str]) -> str | None:
     """Like unconfirmed(), but each quote cites the record it came from.
 
@@ -83,10 +90,7 @@ def unconfirmed_by_records(affected: list[dict], dependencies: dict, sources: di
     A quote counts only if it appears word for word in the record it cites, and only
     if it is not the agents' own words: the agents agreeing is not anyone else agreeing.
     """
-    def shown(ev: dict) -> bool:
-        text = sources.get(ev.get("source", ""), "")
-        q = ev.get("evidence", "")
-        return quoted(q, text) and not re.search(r"\bagent\b", q, re.I)
+    shown = lambda ev: on_record(ev, sources)
 
     affected = [a for a in affected
                 if not re.match(r"\s*(agent\b|none\b|n/?a\b|nobody\b)", a.get("who", ""), re.I)]
