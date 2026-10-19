@@ -18,6 +18,12 @@ PAUSE = 0.9
 _C = {"dim": "2", "bold": "1", "green": "32", "red": "31", "yellow": "33", "cyan": "36", "white": "97"}
 
 
+def clip(text: str, n: int) -> str:
+    """Keep one screen line: cut long text and mark the cut."""
+    text = " ".join(text.split())
+    return text if len(text) <= n else text[: n - 1].rstrip() + "…"
+
+
 def c(text: str, *styles: str) -> str:
     if not VIDEO:
         return text
@@ -96,8 +102,8 @@ def prepared(ready: str, decide: str, ask: str) -> None:
         print(f"  [prepared] ready: {ready[:160]}\n             decide: {decide[:160]}\n             ask: {ask[:200]}")
         return
     print(c("  Prepared for the humans", "bold"))
-    print(f"     {c('Decide', 'dim')}  {decide}")
-    print(f"     {c('Ask', 'dim')}     {ask[:200]}")
+    print(f"     {c('Decide', 'dim')}  {clip(decide, 100)}")
+    print(f"     {c('Ask', 'dim')}     {clip(ask, 100)}")
     print()
     pause(2)
 
@@ -113,5 +119,5 @@ def agent_says(text: str) -> None:
         print(f"  [agent] {text[:500]}")
         return
     if text:
-        print(c("  Agent to its human:", "dim") + f" {text[:300]}\n")
+        print(c("  Agent to its human:", "dim") + f" {clip(text, 90)}\n")
         pause(2)
