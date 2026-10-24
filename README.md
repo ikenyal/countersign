@@ -72,6 +72,19 @@ A previous version, frozen in `797a0c4` and scored on `bench/final3.json`, close
 
 **Cost.** g6.xlarge is $0.8048 an hour on demand in us-east-1. Kept busy, that is about $0.06 per 1,000 judgments and $0.02 per 1,000 record checks. An idle GPU costs the same per hour, so at low volume a hosted LLM call is cheaper. Decider's case here is speed, many small decisions per agreement, and running the part that judges internal records on an instance you control.
 
+## Check the numbers yourself
+
+Every answer the models gave was saved in `bench/` when each set was scored, so you can re-score the two headline results on a laptop in about a second. No GPU, no AWS account, no model call:
+
+```bash
+git clone https://github.com/ikenyal/countersign && cd countersign
+python -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt
+python bench/structure_eval.py final4   # the whole gate: unsafe 0/20, needless 5/10, LLM calls 0/30; Nova Lite only: unsafe 10/20
+python bench/score_records.py           # the record check: 7/8 promises caught, 0/16 false alarms
+```
+
+The scripts read the case labels (committed before scoring) and the saved answers, and count. They print the case ids behind each number, so you can open any case in `bench/final4.json` or `bench/records.json` and judge it yourself.
+
 ## Limits
 
 - The cases are written in English by a coding agent and describe fictional teams. The labels of 208 cases were reviewed by the person who signs off; `bench/final2.json` was not.
